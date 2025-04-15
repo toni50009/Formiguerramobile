@@ -11,6 +11,20 @@ body {
 }
 
 img{
+  border: 2px solid black;
+}
 
+.card{
+  padding: 0;
+  height: 100%;
+  background-color: #e0ae08;
+}
 
+.card-body {
+  padding: 0;
+  margin: 0;
+  line-height: 1rem;
+  --bs-card-border-width: 0px;
+  --bs-card-spacer-y: 0px;
+  --bs-card-spacer-x: 0px;
 }
