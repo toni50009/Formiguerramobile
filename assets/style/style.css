@@ -1,30 +1,40 @@
-body {
-  font-family: 'Poppins', sans-serif;
-  background-image: url('/assets/img/background.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  color: white;
-  padding: 0;
-  margin: 0;
+.card-img-full {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  border-bottom: 2px solid black;
+  border-radius: 0.5rem 0.5rem 0 0;
 }
 
-img{
-  border: 2px solid black;
-}
-
-.card{
-  padding: 0;
-  height: 100%;
+.custom-card {
   background-color: #e0ae08;
+  border: none;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 180px; /* LIMITE DE LARGURA DO CARD */
 }
 
-.card-body {
-  padding: 0;
-  margin: 0;
-  line-height: 1rem;
-  --bs-card-border-width: 0px;
-  --bs-card-spacer-y: 0px;
-  --bs-card-spacer-x: 0px;
+.custom-card .card-body {
+  padding: 0.5rem;
+}
+
+.custom-btn {
+  font-size: 0.55rem;
+  padding: 0.2rem 0.5rem;
+  color: white;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 0.3rem;
+  transition: all 0.3s ease;
+}
+
+.custom-btn:hover {
+  border-color: #ffc107;
+  background-color: rgba(255, 193, 7, 0.1);
+  color: #ffc107;
+}
+
+.invisible {
+  visibility: hidden;
 }
