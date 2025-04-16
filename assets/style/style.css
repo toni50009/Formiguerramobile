@@ -19,3 +19,26 @@ p{
   margin-top: 1rem !important;
 }
 
+.card-player {
+  background-color: #e0ae08;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  padding: 0.4rem;
+  width:25%;
+  height: auto;
+  text-align: center;
+  transition: border 0.3s, transform 0.3s;
+  cursor: pointer;
+}
+
+
+.card-img-top{
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  border: 2px solid black;
+  border-radius: 0.5rem;
+}
