@@ -1,23 +1,47 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-image: url('/assets/img/background.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+p{
+  font-size: 3px !important;
+}
+
+/* Cartas */
+.card-player {
+  background-color: #e0ae08;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  padding: 0.4rem;
+  width: 80px;
+  height: 100px;
+  text-align: center;
+  transition: border 0.3s, transform 0.3s;
+  cursor: pointer;
+}
+
 .card-img-full {
   width: 100%;
   height: auto;
   object-fit: cover;
   display: block;
   border-bottom: 2px solid black;
-  border-radius: 0.5rem 0.5rem 0 0;
 }
 
 .custom-card {
   background-color: #e0ae08;
   border: none;
   border-radius: 0.5rem;
-  width: 100%;
-  max-width: 180px; /* LIMITE DE LARGURA DO CARD */
+
 }
 
-.custom-card .card-body {
-  padding: 0.5rem;
-}
+
 
 .custom-btn {
   font-size: 0.55rem;
@@ -37,4 +61,73 @@
 
 .invisible {
   visibility: hidden;
+}
+
+
+
+.card-player:hover {
+  border-color: green;
+  transform: translateY(-5px);
+}
+
+/* Tabuleiro */
+.tabuleiro-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  position: relative;
+}
+
+.tabuleiro {
+  background-color: rgba(139, 69, 19, 0.3);
+  border: 3px solid #4b2e1e;
+  border-radius: 0.5rem;
+  height: 120px;
+  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.tabuleiro-texto {
+  color: #fff;
+  font-size: 0.8rem;
+  opacity: 0.5;
+}
+
+.tabuleiro-botoes {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.tabuleiro-botoes button {
+  background-color: #4b2e1e;
+  color: #fff;
+  font-size: 0.65rem;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tabuleiro-botoes.mostrar {
+  opacity: 1;
+}
+
+/* Campo do inimigo com espaço para efeito futuro */
+.enemy-info::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 100px;
+  background-color: transparent;
+  z-index: 0;
 }
