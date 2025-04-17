@@ -11,24 +11,74 @@
   border: 4px solid black;
 }
 
-p, .title {
-  font-size: 0.8rem !important;
+p, .title ,button{
+  font-size: 0.7rem !important;
 }
 
 p{
-  margin-top: 1rem !important;
+  margin-top: 0.8rem !important;
+}
+
+.table-item{
+  line-height: 0.5rem !important;
 }
 
 .card-player {
   background-color: #e0ae08;
   border: 2px solid transparent;
   border-radius: 0.5rem;
-  padding: 0.4rem;
-  width:25%;
+  max-width: 15% !important;
   height: auto;
   text-align: center;
   transition: border 0.3s, transform 0.3s;
   cursor: pointer;
+}
+
+
+.card-text{
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 0.6rem !important;
+  border: 2px solid transparent;
+  border-radius: 0.3rem;
+}
+
+
+.tabuleiro{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+  max-width: 700px;
+}
+
+.card-tabuleiro{
+  background-color: #e0ae08;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  max-width: 25% !important;
+  text-align: center;
+}
+
+
+.campo-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 0.6rem !important;
+}
+
+.btn{
+  background-color: #e0ae08;
+  border: 2px solid black;
+  text-align: center;
+  transition: border 0.3s, transform 0.3s;
+  cursor: pointer;
+  width: 100% !important;
+  padding: 0 !important;
 }
 
 .card{
@@ -50,11 +100,18 @@ p{
 
 
 .hand{
-  max-width: 800px;
+  max-width: 500px;
   max-height: 2330px;
 }
 
 
 .player-info , .enemy-info{
-  max-width: 800px;
+  max-width: 500px;
+  max-height: 150px;
+}
+
+
+.enemy-info-tables, .player-info-tables{
+  max-width: 480px;
+  max-height: 140px;
 }
