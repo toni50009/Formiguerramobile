@@ -12,7 +12,7 @@
 }
 
 p, .title {
-  font-size: 0.9rem !important;
+  font-size: 0.8rem !important;
 }
 
 p{
@@ -31,6 +31,11 @@ p{
   cursor: pointer;
 }
 
+.card{
+  --bs-card-spacer-y: 0 !important;
+  --bs-card-spacer-x: 0 !important;
+}
+
 
 .card-img-top{
   padding: 0 !important;
@@ -41,4 +46,15 @@ p{
   display: block;
   border: 2px solid black;
   border-radius: 0.5rem;
+}
+
+
+.hand{
+  max-width: 800px;
+  max-height: 2330px;
+}
+
+
+.player-info , .enemy-info{
+  max-width: 800px;
 }
