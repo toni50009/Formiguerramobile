@@ -23,12 +23,20 @@ p{
   background-color: #e0ae08;
   border: 2px solid transparent;
   border-radius: 0.5rem;
-  padding: 0.4rem;
   width:25%;
   height: auto;
+  max-height: 200px;
+  max-width: 120px;
   text-align: center;
   transition: border 0.3s, transform 0.3s;
   cursor: pointer;
+}
+
+
+.card-text{
+  font-size: 0.6rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .card{
@@ -36,6 +44,31 @@ p{
   --bs-card-spacer-x: 0 !important;
 }
 
+.tabuleiro{
+  max-width: 800px;
+  max-height: 200px;
+}
+
+
+.btn-card{
+  font-size: 0.8rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-weight: 600 !important;
+  text-align: center !important;
+  min-width: 50px !important;
+}
+
+
+.card-tabuleiro{
+  background-color: #e0ae08;
+  border: 2px solid transparent;
+  border-radius: 0.5rem;
+  max-height: 200px;
+  max-width: 120px;
+  text-align: center;
+  transition: border 0.3s, transform 0.3s;
+}
 
 .card-img-top{
   padding: 0 !important;

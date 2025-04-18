@@ -15,9 +15,9 @@
       <div class="d-flex flex-row gap-2">
         <div class="recursos-inimigo border border-warning p-2">
           <strong class="title">Recursos Inimigo</strong>
-          <p class="lh-1">Tijolos: <strong>5</strong></p>
-          <p class="lh-1">Armas: <strong>5</strong></p>
-          <p class="lh-1">Cristais: <strong>5</strong></p>
+          <p style="line-height: 0.5rem !important;">Tijolos: <strong>5</strong></p>
+          <p style="line-height: 0.5rem !important">Armas: <strong>5</strong></p>
+          <p style="line-height: 0.5rem !important">Cristais: <strong>5</strong></p>
         </div>
         <div class="status-inimigo border border-warning p-2">
           <strong class="title">Castelo Inimigo</strong>
@@ -26,48 +26,57 @@
         </div>
         <div class="fornecedores-inimigo border border-warning p-2">
           <strong class="title">Fornecedores Inimigo</strong>
-          <p class="lh-1">Construtores: <strong>2</strong></p>
-          <p class="lh-1">Soldados: <strong>2</strong></p>
-          <p class="lh-1">Magos: <strong>2</strong></p>
+          <p style="line-height: 0.5rem !important;">Construtores: <strong>2</strong></p>
+          <p style="line-height: 0.5rem !important;">Soldados: <strong>2</strong></p>
+          <p style="line-height: 0.5rem !important;">Magos: <strong>2</strong></p>
         </div> 
       </div>
     </div>
 
-    <div class="tabuleiro-wrapper position-relative d-flex justify-content-center align-items-center flex-grow-1">
+    <div class="tabuleiro-wrapper position-relative d-flex justify-content-center align-items-center flex-grow-1 mt-1">
       <div class="tabuleiro" id="tabuleiro">
-        <p class="tabuleiro-texto">Tabuleiro</p>
+        <div class="card-tabuleiro card">
+          <img src="/assets/img/hannya2.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <p class="card-text"><strong>Hannya</strong></p>
+            <p class="card-text"><strong>Adiciona +4 de todos os Recursos</strong></p>
+            <p class="card-text"><strong>Custa 28 Armas</strong></p>
+            <button class="btn btn-card text-white bg-success">Jogar</button>
+            <button class="btn btn-card text-white bg-danger">Trocar</button>
+          </div>
+        </div>
       </div>
     </div>  
 
 
-    <div class="player-zone d-flex flex-column justify-content-end align-items-center pb-1">
+    <div class="player-zone d-flex flex-column justify-content-end align-items-center pb-1 mt-1">
 
-      <div class="hand d-flex justify-content-center gap-1 mb-2">
+      <div class="hand d-flex justify-content-center gap-1 mb-1">
         <div class="card-player card" onclick="jogarCarta(this)">
           <img src="/assets/img/hannya2.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <p class="card-text bg-black text-white"><strong>Hannya</strong></p>
+            <p class="card-text"><strong>Hannya</strong></p>
           </div>
         </div>
 
         <div class="card-player card" onclick="jogarCarta(this)">
           <img src="/assets/img/hannya2.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <p class="card-text bg-black text-white"><strong>Hannya</strong></p>
+            <p class="card-text"><strong>Hannya</strong></p>
           </div>
         </div>
 
         <div class="card-player card" onclick="jogarCarta(this)">
           <img src="/assets/img/hannya2.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <p class="card-text bg-black text-white"><strong>Hannya</strong></p>
+            <p class="card-text"><strong>Hannya</strong></p>
           </div>
         </div>
 
         <div class="card-player card" onclick="jogarCarta(this)"v>
           <img src="/assets/img/hannya2.png" class="card-img-top" alt="...">
           <div class="card-body">
-            <p class="card-text bg-black text-white"><strong>Hannya</strong></p>
+            <p class="card-text"><strong>Hannya</strong></p>
           </div>
         </div>
 
@@ -78,9 +87,9 @@
         <div class="d-flex flex-row gap-2">
           <div class="recursos-player border border-warning p-2">
             <strong class="title">Recursos Jogador</strong>
-            <p class="lh-1">Tijolos: <strong>5</strong></p>
-            <p class="lh-1">Armas: <strong>5</strong></p>
-            <p class="lh-1">Cristais: <strong>5</strong></p>
+            <p style="line-height: 0.5rem !important;">Tijolos: <strong>5</strong></p>
+            <p style="line-height: 0.5rem !important;">Armas: <strong>5</strong></p>
+            <p style="line-height: 0.5rem !important;">Cristais: <strong>5</strong></p>
           </div>
           <div class="status-player border border-warning p-2">
             <strong class="title">Castelo Jogador</strong>
@@ -89,9 +98,9 @@
           </div>
           <div class="fornecedores-player border border-warning p-2">
             <strong class="title">Fornecedores Jogador</strong>
-            <p class="lh-1">Construtores: <strong>2</strong></p>
-            <p class="lh-1">Soldados: <strong>2</strong></p>
-            <p class="lh-1">Magos: <strong>2</strong></p>
+            <p style="line-height: 0.5rem !important;">Construtores: <strong>2</strong></p>
+            <p style="line-height: 0.5rem !important;">Soldados: <strong>2</strong></p>
+            <p style="line-height: 0.5rem !important;">Magos: <strong>2</strong></p>
           </div> 
         </div>
       </div>
