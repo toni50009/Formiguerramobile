@@ -19,8 +19,16 @@ p{
   margin-top: 0.8rem !important;
 }
 
+
 .table-item{
-  line-height: 0.5rem !important;
+  line-height: 0.8rem !important;
+  font-size: 0.7rem !important;
+}
+
+@media(max-width: 404px){
+  .table-item{
+    line-height: 0.5rem !important;
+  }  
 }
 
 .card-player {
@@ -72,6 +80,8 @@ p{
 }
 
 .tabuleiro{
+  height: 100% !important;
+  width: 100% !important;
   max-width: 800px !important;
   max-height: 400px !important;
 }
@@ -90,9 +100,10 @@ p{
   background-color: #e0ae08;
   border: 2px solid transparent;
   border-radius: 0.5rem;
-  max-width: 25% !important;
+  max-width: 40% !important;
   text-align: center;
 }
+
 
 .card-img-top{
   padding: 0 !important;
@@ -112,10 +123,7 @@ p{
 }
 
 
-.player-info , .enemy-info{
-  max-width: 500px;
-  max-height: 150px;
-}
+
 
 
 .enemy-info-tables, .player-info-tables{

@@ -36,13 +36,10 @@
     <div class="tabuleiro-wrapper container position-relative d-flex justify-content-center align-items-center flex-grow-1 mt-1">
       <div class="tabuleiro container d-flex align-items-center justify-content-center" id="tabuleiro">
         <div class="card-tabuleiro card">
-          <img src="/assets/img/hannya2.png" class="card-img-top" alt="...">
+          <img src="/assets/img/icone.png" class="card-img-top" alt="Imagem do Tabuleiro" style="opacity: 0.5;">
           <div class="card-body">
-            <p class="card-text"><strong>Ponte Protegida</strong></p>
-            <p class="card-text"><strong>Adiciona +4 de todos os Recursos</strong></p>
-            <p class="card-text"><strong>Custa 28 Armas</strong></p>
-            <button class="btn btn-card text-white bg-success">Jogar</button>
-            <button class="btn btn-card text-white bg-danger">Trocar</button>
+            <p class="card-text"><strong>Tabuleiro</strong></p>
+            <p class="card-text"><strong>Clique na carta de sua mão, que ela aparecerá aqui com detalhes</strong></p>
           </div>
         </div>
       </div>
@@ -52,46 +49,21 @@
     <div class="player-zone d-flex flex-column justify-content-end align-items-center pb-1">
 
       <div class="hand d-flex justify-content-center gap-1 mb-1">
-        <div class="card-player card" onclick="jogarCarta(this)">
-          <img src="/assets/img/hannya2.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text"><strong>Ponte Protegida</strong></p>
-          </div>
+       
+
+        <div class="card-player card" onclick="mostrarCarta(this)">
         </div>
 
-        <div class="card-player card" onclick="jogarCarta(this)">
-          <img src="/assets/img/hannya2.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text"><strong>Ponte Protegida</strong></p>
-          </div>
+        <div class="card-player card" onclick="mostrarCarta(this)">
         </div>
 
-        <div class="card-player card" onclick="jogarCarta(this)">
-          <img src="/assets/img/hannya2.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text"><strong>Hannya</strong></p>
-          </div>
+        <div class="card-player card" onclick="mostrarCarta(this)"v>
         </div>
 
-        <div class="card-player card" onclick="jogarCarta(this)"v>
-          <img src="/assets/img/hannya2.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text"><strong>Hannya</strong></p>
-          </div>
+        <div class="card-player card" onclick="mostrarCarta(this)"v>
         </div>
 
-        <div class="card-player card" onclick="jogarCarta(this)"v>
-          <img src="/assets/img/hannya2.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text"><strong>Hannya</strong></p>
-          </div>
-        </div>
-
-        <div class="card-player card" onclick="jogarCarta(this)"v>
-          <img src="/assets/img/hannya2.png" class="card-img-top" alt="...">
-          <div class="card-body">
-            <p class="card-text"><strong>Hannya</strong></p>
-          </div>
+        <div class="card-player card" onclick="mostrarCarta(this)"v>
         </div>
 
       </div>
@@ -124,6 +96,6 @@
   </div> 
 
 
-  <script src="/assets/js/app.js"></script>
+  <script src="assets/js/app.js"></script>
 </body>
 </html>
