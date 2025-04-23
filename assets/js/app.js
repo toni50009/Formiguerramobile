@@ -68,7 +68,7 @@ const cartas = [
       recurso: 'tijolos',
       quantidade: 39
   },
-  imagem: '/assets/img/babilonia/babilonia.png',  },
+  imagem: '/assets/img/babilonia/babilonia.webp',  },
   {
     nome: 'catapulta',
     nomecompleto: 'Catapulta',
@@ -81,7 +81,7 @@ const cartas = [
       recurso: 'armas',
       quantidade: 10
   },
-  imagem: '/assets/img/catapulta/catapulta.png',
+  imagem: '/assets/img/catapulta/catapulta.webp',
   },
   {
     nome: 'conjurararmas',
@@ -95,7 +95,7 @@ const cartas = [
       recurso: 'cristais',
       quantidade: 4
   },
-  imagem: '/assets/img/conjurararmas/conjurararmas.png',
+  imagem: '/assets/img/conjurararmas/conjurararmas.webp',
   },
   {
     nome: 'conjurarcristais',
@@ -109,7 +109,7 @@ const cartas = [
       recurso: 'cristais',
       quantidade: 4
   },
-  imagem: '/assets/img/conjurarcristais/conjurarcristais.png',
+  imagem: '/assets/img/conjurarcristais/conjurarcristais.webp',
   },
   {
     nome: 'conjurartijolos',
@@ -123,7 +123,7 @@ const cartas = [
       recurso: 'cristais',
       quantidade: 4
   },
-  imagem: '/assets/img/conjurartijolos/conjurartijolos.png',
+  imagem: '/assets/img/conjurartijolos/conjurartijolos.webp',
   },
   {
     nome: 'contrabando',
@@ -140,7 +140,7 @@ const cartas = [
       recurso: 'armas',
       quantidade: 15
   },
-  imagem: '/assets/img/contrabando/contrabando.png',
+  imagem: '/assets/img/contrabando/contrabando.webp',
   },
   {
     nome: 'demolirarmas',
@@ -154,7 +154,7 @@ const cartas = [
       recurso: 'cristais',
       quantidade: 4
   },
-  imagem: '/assets/img/demolirarmas/demolirarmas.png',
+  imagem: '/assets/img/demolirarmas/demolirarmas.webp',
   },
   {
     nome: 'demolircristais',
@@ -168,7 +168,7 @@ const cartas = [
       recurso: 'cristais',
       quantidade: 4
   },
-  imagem: '/assets/img/demolircristais/demolircristais.png',
+  imagem: '/assets/img/demolircristais/demolircristais.webp',
   },
   {
     nome: 'demolirtijolos',
@@ -182,7 +182,7 @@ const cartas = [
       recurso: 'cristais',
       quantidade: 4
   },
-  imagem: '/assets/img/demolirtijolos/demolirtijolos.png',
+  imagem: '/assets/img/demolirtijolos/demolirtijolos.webp',
   },
   {
     nome: 'fortaleza',
@@ -196,7 +196,7 @@ const cartas = [
       recurso: 'tijolos',
       quantidade: 18
   },
-  imagem: '/assets/img/fortaleza/fortaleza.png',
+  imagem: '/assets/img/fortaleza/fortaleza.webp',
   },
   {
     nome: 'hannya',
@@ -227,7 +227,7 @@ const cartas = [
       recurso: 'armas',
       quantidade: 12
   },
-  imagem: '/assets/img/incendiar/incendiar.png',
+  imagem: '/assets/img/incendiar/incendiar.webp',
   },
   {
     nome: 'injustica',
@@ -262,7 +262,7 @@ const cartas = [
       recurso: 'cristais',
       quantidade: 25
   },
-  imagem: '/assets/img/maldicao/maldicao.png',
+  imagem: '/assets/img/maldicao/maldicao.webp',
   },
   {
     nome: 'merlin',
@@ -276,7 +276,7 @@ const cartas = [
       recurso: 'cristais',
       quantidade: 8
   },
-  imagem: '/assets/img/merlin/merlin.png',
+  imagem: '/assets/img/merlin/merlin.webp',
   },
   {
     nome: 'montagrilos',
@@ -290,7 +290,7 @@ const cartas = [
       recurso: 'armas',
       quantidade: 2
   },
-  imagem: '/assets/img/montagrilos/montagrilos.png',
+  imagem: '/assets/img/montagrilos/montagrilos.webp',
   },
   {
     nome: 'muralha',
@@ -304,7 +304,7 @@ const cartas = [
       recurso: 'tijolos',
       quantidade: 12
   },
-  imagem: '/assets/img/muralha/muralha.png',
+  imagem: '/assets/img/muralha/muralha.webp',
   },
   {
     nome: 'murodebarro',
@@ -318,7 +318,7 @@ const cartas = [
       recurso: 'tijolos',
       quantidade: 1
   },
-  imagem: '/assets/img/murodebarro/murodebarro.png',
+  imagem: '/assets/img/murodebarro/murodebarro.webp',
   },
   {
     nome: 'pixies',
@@ -332,7 +332,7 @@ const cartas = [
       recurso: 'cristais',
       quantidade: 22
   },
-  imagem: '/assets/img/pixies/pixies.png',
+  imagem: '/assets/img/pixies/pixies.webp',
   },
   {
     nome: 'musgorigido',
@@ -346,7 +346,7 @@ const cartas = [
       recurso: 'tijolos',
       quantidade: 6
   },
-  imagem: '/assets/img/musgorigido/musgorigido.png',
+  imagem: '/assets/img/musgorigido/musgorigido.webp',
   },
   {
     nome: 'ponteprotegida',
@@ -374,7 +374,7 @@ const cartas = [
       recurso: 'tijolos',
       quantidade: 1
   },
-  imagem: '/assets/img/primeiropiso/primeiropiso.png',
+  imagem: '/assets/img/primeiropiso/primeiropiso.webp',
   },
   {
     nome: 'surpreender',
@@ -388,7 +388,7 @@ const cartas = [
       recurso: 'armas',
       quantidade: 18
   },
-  imagem: '/assets/img/surpreender/surpreender.png',
+  imagem: '/assets/img/surpreender/surpreender.webp',
   },
   {
     nome: 'tamandua',
@@ -402,7 +402,7 @@ const cartas = [
       recurso: 'cristais',
       quantidade: 21
   },
-  imagem: '/assets/img/tamandua/tamandua.png',
+  imagem: '/assets/img/tamandua/tamandua.webp',
   },
   {
     nome: 'torredevigia',
@@ -416,7 +416,7 @@ const cartas = [
       recurso: 'tijolos',
       quantidade: 5
   },
-  imagem: '/assets/img/torredevigia/torredevigia.png',
+  imagem: '/assets/img/torredevigia/torredevigia.webp',
   },
   {
     nome: 'universidade',
@@ -430,7 +430,7 @@ const cartas = [
       recurso: 'tijolos',
       quantidade: 8
   },
-  imagem: '/assets/img/universidade/universidade.png',
+  imagem: '/assets/img/universidade/universidade.webp',
   }
 ];
 
