@@ -496,32 +496,27 @@ function gerarDescricao(carta){
   switch (tipo){
     case 'dano':
       return `Causa ${quantidade} de dano`;
-      break;
 
       case 'adicionar':
       return `+ ${quantidade} de ${alvo}`;
-      break;
 
       case 'remover':
       return `- ${quantidade} de ${alvo} do inimigo`;
-      break;
 
       case  'removertudo':
       return `- ${quantidade} de todos os recursos do inimigo`;
-      break;
 
       case 'gangorra':
       return `Rouba ${quantidade} de todos os recursos do inimigo`;
-      break;
-
 
       case 'gangorracastelo':
         return `+8 de castelo e -4 de castelo inimigo`;
-        break;
 
       case 'gangorratudo':
         return `Rouba 1 de todos os recursos e fornecedores do inimigo`;
-        break;
+
+        default:
+  return "Tipo de efeito desconhecido";
 
   }
 
@@ -561,7 +556,7 @@ function mostrarCarta(el){
           <h5 class="card-title"><strong>${carta.nomecompleto}</strong></h5>
           <p class="card-text"><strong>${gerarDescricao(carta)}</strong></p>
           <p class="card-text"><strong>${gerarTextoCusto(carta)}</strong></p>
-          <button class="btn btn-card text-white bg-success">Jogar</button>
+          <button class="btn btn-card text-white bg-success" onclick="jogarCarta(this)">Jogar</button>
           <button class="btn btn-card text-white bg-danger">Trocar</button>
       </div>
     
@@ -570,6 +565,36 @@ function mostrarCarta(el){
 }
 
 
+// function novaCarta(el){
+//   let novaCarta = cartas[Math.floor(Math.random() * cartas.length)];
+//   const cartaId = el.dataset.cartaId;
+
+//     el.src = novaCarta.imagem;
+//     el.alt = novaCarta.nome;
+//     el.dataset.nome = novaCarta.nome;
+//     el.dataset.cartaId = novaCarta.nome;
+
+//     el.innerHTML = `
+//           <img src="${cartaAleatoria.imagem}" class="card-img-top" alt="${cartaAleatoria.nome}">
+//           <div class="card-body">
+//             <p class="card-text"><strong>${cartaAleatoria.nomecompleto}</strong></p>
+//           </div>
+//     `;
+
+// }
+
+
+function centralizarTabuleiro(){
+  const tabuleiro = document.querySelector('.tabuleiro');
+  tabuleiro.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+
 //Começa o jogo
 
 gerarCartas();
+centralizarTabuleiro();
+
+
+
+
