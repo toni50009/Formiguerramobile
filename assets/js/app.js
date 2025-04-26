@@ -440,9 +440,9 @@ const players = {
   1: {
     castelo: 30,
     muro: 10,
-    tijolos: 5,
-    armas: 5,
-    cristais: 5,
+    tijolos: 55,
+    armas: 55,
+    cristais: 55,
     construtores: 2,
     soldados: 2,
     magos: 2
@@ -550,7 +550,7 @@ function mostrarCarta(el){
   const tabuleiro = document.getElementById('tabuleiro');
   
   tabuleiro.innerHTML = `
-    <div class="card-tabuleiro card">
+    <div class="card-tabuleiro card" data-carta-id="${cartaId}">
       <img src="${carta.imagem}" class="card-img-top" alt="${carta.nome}">
       <div class="card-body">
           <h5 class="card-title"><strong>${carta.nomecompleto}</strong></h5>
@@ -584,10 +584,248 @@ function mostrarCarta(el){
 // }
 
 
+//ATUALIZAR DADOS INTERFACE
+function attUI(){
+
+  for(let i = 1; i <= 2; i++){
+    document.getElementById(`p${i}-castelo`).textContent = `Castelo: ${players[i].castelo}`;
+    document.getElementById(`p${i}-muro`).textContent = `Muro: ${players[i].muro}`;
+    document.getElementById(`p${i}-tijolos`).textContent = `Tijlos: ${players[i].tijolos}`;
+    document.getElementById(`p${i}-construtores`).textContent = `Construtores: ${players[i].construtores}`;
+    document.getElementById(`p${i}-soldados`).textContent = `Soldados: ${players[i].soldados}`;
+    document.getElementById(`p${i}-armas`).textContent = `Armas: ${players[i].armas}`;
+    document.getElementById(`p${i}-cristais`).textContent = `Cristais: ${players[i].cristais}`;
+    document.getElementById(`p${i}-magos`).textContent = `Magos: ${players[i].magos}`;
+  }
+}
+
+
 function centralizarTabuleiro(){
   const tabuleiro = document.querySelector('.tabuleiro');
   tabuleiro.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
+
+
+// CHAMADA SEMPRE QUE UMA SELECIONAVEL FOR CLICADA
+function aplicarEfeito(nomeCarta){
+  const carta = cartas.find(c => c.nome === nomeCarta);
+  console.log(nomeCarta);
+
+  let njogadorAlvo = currentPlayer === 1 ? 2 : 1;
+
+  const jogador = players[currentPlayer];
+  const jogadorAlvo = players[njogadorAlvo];
+  const efeito = carta.efeito;
+  const recurso = carta.custo.recurso;
+  const qtdRecurso = carta.custo.quantidade;
+
+
+  checarDados(jogador,efeito,jogadorAlvo);
+
+  jogador[recurso] -= qtdRecurso;
+  checarNegativo(jogador,recurso);
+  attUI();
+}
+
+
+//CHECAR OS DADOS
+function checarDados(jogador,efeito,jogadorAlvo){
+  switch (efeito.tipo) {
+    case 'adicionar':
+      adicionar(jogador,efeito);
+      break;
+
+    case 'dano':
+      dano(jogadorAlvo,efeito);
+      break;
+
+    case 'remover':
+      remover(jogadorAlvo,efeito);
+      break;
+
+    case 'gangorra':
+      gangorra(jogador,jogadorAlvo,efeito);
+      break;
+
+    case 'gangorratudo':
+      gangorraTudo(jogador,jogadorAlvo,efeito);
+      break;
+  }
+}
+
+//CHECAR SE É NEGATIVO
+function checarNegativo(jogadorAlvo,coisa){
+  if(jogadorAlvo[coisa] < 0) jogadorAlvo[coisa] = 0;
+}
+
+
+
+//FUNCOES DE EFEITOS DAS CARTAS
+function adicionar(jogador, efeito){
+  jogador[efeito.alvo] += efeito.quantidade;
+  attUI();
+}
+
+
+function dano(jogadorAlvo, efeito){
+  let dano = efeito.quantidade;
+  let muroAtual = jogadorAlvo.muro;
+
+  if(muroAtual > 0){
+    jogadorAlvo.muro -= dano;
+
+    if(jogadorAlvo.muro < 0){
+       let overkill = Math.abs(jogadorAlvo.muro);
+       jogadorAlvo.muro = 0;
+       jogadorAlvo.castelo -= overkill;
+       if(jogadorAlvo.castelo < 0) jogadorAlvo.castelo = 0;
+    }
+  }else{
+    jogadorAlvo.castelo -= dano;
+  }
+  attUI();
+}
+
+
+function remover(jogadorAlvo,efeito){
+
+  if(typeof efeito.alvo === 'string'){
+    jogadorAlvo[efeito.alvo] -= efeito.quantidade;
+    checarNegativo(jogadorAlvo,efeito.alvo);
+  
+  }else if(Array.isArray(efeito.alvo)){
+    efeito.alvo.forEach(recurso => {
+      jogadorAlvo[recurso] -= efeito.quantidade;
+      checarNegativo(jogadorAlvo,recurso);
+    })
+  }
+  attUI();
+}
+
+
+function gangorra(jogador,jogadorAlvo,efeito){
+
+  if(typeof efeito.alvo === 'string'){
+    jogador[efeito.alvo] += efeito.quantidade[0];
+    jogadorAlvo[efeito.alvo] -= efeito.quantidade[1];
+    checarNegativo(jogadorAlvo,efeito.alvo);
+
+  
+  }else if(Array.isArray(efeito.alvo)){
+    efeito.alvo.forEach(recurso =>{
+      if(jogadorAlvo[recurso] >= 5){
+        jogador[recurso] += efeito.quantidade;
+        jogadorAlvo[recurso] -= efeito.quantidade;
+      }else if(jogadorAlvo[recurso] > 0 && jogadorAlvo[recurso] < 5){
+        jogador[recurso] += jogadorAlvo[recurso];
+        jogadorAlvo[recurso] = 0;
+
+      }else{
+        jogadorAlvo[recurso] = 0;
+      };
+    });
+  }
+  attUI();
+}
+
+
+function gangorraTudo(jogador,jogadorAlvo,efeito){
+
+  efeito.alvo.forEach(recurso =>{
+    if(jogadorAlvo[recurso] === 0 && recurso === 'tijolos' || 
+      jogadorAlvo[recurso] === 0 && recurso === 'armas' ||
+      jogadorAlvo[recurso] === 0 && recurso === 'cristais'){
+      jogador[recurso] ++;
+      jogadorAlvo[recurso] = 0;
+    }else if(jogadorAlvo[recurso] === 1 && recurso === 'construtores' || 
+      jogadorAlvo[recurso] === 1 && recurso === 'soldados' ||
+      jogadorAlvo[recurso] === 1 && recurso === 'magos'
+    ){
+      jogador[recurso] ++;
+      jogadorAlvo[recurso] = 1;
+
+    }else{
+      jogador[recurso] ++;
+      jogadorAlvo[recurso] --;
+    };
+  attUI();
+});
+
+}
+
+
+
+
+//VERIFICAR QUAL JOGADOR RECEBE RECURSOS AO FINAL DA RODADA
+function verificarJogador(){
+  if(currentPlayer === 1){
+    const p = players[2];
+    p.tijolos += p.construtores;
+    p.armas += p.soldados;
+    p.cristais += p.magos;
+    }else{
+      const p = players[1];
+      p.tijolos += p.construtores;
+      p.armas += p.soldados;
+      p.cristais += p.magos;
+    }
+}
+
+
+
+
+
+//CHAMA PROXIMA RODADA
+function proximaRodada(){
+
+  if(checarCondicaoVitoria() == true){
+    return;
+  }
+
+  verificarJogador();
+  currentPlayer = currentPlayer === 1 ? 2 : 1;
+  verificarCusto();
+  
+  if(currentPlayer === 1){
+  habilitarSelecao();
+  habilitarBotao();
+  }
+  if(currentPlayer === 2){
+    botJoga();
+  }
+  attUI();
+}
+
+
+
+
+
+
+
+
+
+function jogarCarta(el){
+
+
+  const cartaId = el.closest('.card-tabuleiro').dataset.cartaId;
+  const nomeCarta = cartas[cartaId].nome;
+  const carta = cartas[cartaId];
+  const custo = carta.custo.quantidade;
+  const recurso = carta.custo.recurso;
+
+  if (players[currentPlayer][recurso] >= custo) {
+    players[currentPlayer][recurso] -= custo;
+    aplicarEfeito(nomeCarta);
+  } else {
+    alert('Você não tem recursos suficientes!');
+  }
+}
+
+
+
+
+
+
 
 
 //Começa o jogo
