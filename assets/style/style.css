@@ -131,3 +131,64 @@ p{
   max-height: 140px;
 }
 
+
+
+
+@keyframes brilho-contorno{
+  0% {
+    transform: scale(1);
+    color: #0bca44;
+  }
+  50% {
+    transform: scale(1.7);
+    color: rgba(217, 198, 250, 0.8);
+  }
+  100% {
+    transform: scale(1);
+    color: #0bca44;
+  }
+}
+
+.brilho-animado{
+  animation: brilho-contorno 1s linear;
+}
+
+@keyframes dark-contorno{
+  0% {
+    transform: scale(1);
+    color: #0bca44;
+  }
+  50% {
+    transform: scale(1.6);
+    color: rgba(209, 24, 24, 0.8);
+  }
+  100% {
+    transform: scale(1);
+    color: #0bca44;
+  }
+}
+
+.dark-animado{
+  animation: dark-contorno 1s linear
+}
+
+@keyframes dark-contorno-recurso{
+  0% {
+    transform: scale(1);
+    color: #0bca44;
+  }
+  50% {
+    transform: scale(1.1);
+    color: rgba(221, 52, 52, 0.8);
+  }
+  100% {
+    transform: scale(1);
+    color: #0bca44;
+  }
+}
+
+
+
+.dark-animado-recurso{
+  animation: dark-contorno-recurso 1s linear
+}

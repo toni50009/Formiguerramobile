@@ -507,10 +507,12 @@ function gerarDescricao(carta){
       return `- ${quantidade} de todos os recursos do inimigo`;
 
       case 'gangorra':
-      return `Rouba ${quantidade} de todos os recursos do inimigo`;
+      if(Array.isArray(alvo)){
+        return `Rouba ${quantidade} de todos os recursos do inimigo`;
 
-      case 'gangorracastelo':
-        return `+8 de castelo e -4 de castelo inimigo`;
+      }
+      return `+8 de castelo e -4 de castelo inimigo`; 
+
 
       case 'gangorratudo':
         return `Rouba 1 de todos os recursos e fornecedores do inimigo`;
@@ -622,9 +624,14 @@ function aplicarEfeito(nomeCarta){
 
   checarDados(jogador,efeito,jogadorAlvo);
 
-  jogador[recurso] -= qtdRecurso;
+  if(typeof efeito.alvo === 'string' && efeito.alvo != 'cristais' || efeito.tipo === 'remover'){
+    animarCampoRecursoPerdido(recurso);
+    checarNegativo(jogador,recurso);
+    attUI();
+  }else{
   checarNegativo(jogador,recurso);
   attUI();
+  }
 }
 
 
@@ -663,6 +670,8 @@ function checarNegativo(jogadorAlvo,coisa){
 //FUNCOES DE EFEITOS DAS CARTAS
 function adicionar(jogador, efeito){
   jogador[efeito.alvo] += efeito.quantidade;
+  console.log(`Elemento após ser adicionado: ${jogador[efeito.alvo]}`);
+  animarCampoAdicionar(efeito.alvo);
   attUI();
 }
 
@@ -673,15 +682,18 @@ function dano(jogadorAlvo, efeito){
 
   if(muroAtual > 0){
     jogadorAlvo.muro -= dano;
+    animarCampoDanoMuro();
 
     if(jogadorAlvo.muro < 0){
        let overkill = Math.abs(jogadorAlvo.muro);
        jogadorAlvo.muro = 0;
        jogadorAlvo.castelo -= overkill;
        if(jogadorAlvo.castelo < 0) jogadorAlvo.castelo = 0;
+       animarCampoDanoCasteloMuro();
     }
   }else{
     jogadorAlvo.castelo -= dano;
+    animarCampoDanoCastelo();
   }
   attUI();
 }
@@ -692,11 +704,13 @@ function remover(jogadorAlvo,efeito){
   if(typeof efeito.alvo === 'string'){
     jogadorAlvo[efeito.alvo] -= efeito.quantidade;
     checarNegativo(jogadorAlvo,efeito.alvo);
+    animarCampoRemover(efeito.alvo);
   
   }else if(Array.isArray(efeito.alvo)){
     efeito.alvo.forEach(recurso => {
       jogadorAlvo[recurso] -= efeito.quantidade;
       checarNegativo(jogadorAlvo,recurso);
+      animarCampoRemoverVarios(recurso);
     })
   }
   attUI();
@@ -709,6 +723,8 @@ function gangorra(jogador,jogadorAlvo,efeito){
     jogador[efeito.alvo] += efeito.quantidade[0];
     jogadorAlvo[efeito.alvo] -= efeito.quantidade[1];
     checarNegativo(jogadorAlvo,efeito.alvo);
+    animarCampoRemover(efeito.alvo);
+    animarCampoAdicionar(efeito.alvo);
 
   
   }else if(Array.isArray(efeito.alvo)){
@@ -723,6 +739,8 @@ function gangorra(jogador,jogadorAlvo,efeito){
       }else{
         jogadorAlvo[recurso] = 0;
       };
+      animarCampoAdicionar(recurso);
+      animarCampoRemover(recurso);
     });
   }
   attUI();
@@ -748,6 +766,7 @@ function gangorraTudo(jogador,jogadorAlvo,efeito){
       jogador[recurso] ++;
       jogadorAlvo[recurso] --;
     };
+    animarCampoGangorraTudo();
   attUI();
 });
 
@@ -815,6 +834,7 @@ function jogarCarta(el){
 
   if (players[currentPlayer][recurso] >= custo) {
     players[currentPlayer][recurso] -= custo;
+    console.log(`Custo depois de ser descontado: ${players[currentPlayer][recurso]}`);
     aplicarEfeito(nomeCarta);
   } else {
     alert('Você não tem recursos suficientes!');
@@ -823,6 +843,64 @@ function jogarCarta(el){
 
 
 
+
+// Função genérica para animar um elemento
+function animarElemento(player, recurso, classe) {
+  const id = `p${player}-${recurso}`;
+  const elemento = document.getElementById(id);
+  if (elemento) {
+    elemento.classList.add(classe);
+    setTimeout(() => {
+      elemento.classList.remove(classe);
+    }, 1000);
+  }
+}
+
+// Funções específicas utilizando a genérica
+function animarCampoRecursoPerdido(recurso) {
+  animarElemento(currentPlayer, recurso, 'dark-animado-recurso');
+}
+
+function animarCampoAdicionar(efeito) {
+  animarElemento(currentPlayer, efeito, 'brilho-animado');
+}
+
+function animarCampoDanoMuro() {
+  const alvo = currentPlayer == 1 ? 2 : 1;
+  animarElemento(alvo, 'muro', 'dark-animado');
+}
+
+function animarCampoDanoCastelo() {
+  const alvo = currentPlayer == 1 ? 2 : 1;
+  animarElemento(alvo, 'castelo', 'dark-animado');
+}
+
+function animarCampoDanoCasteloMuro() {
+  const alvo = currentPlayer == 1 ? 2 : 1;
+  animarElemento(alvo, 'castelo', 'dark-animado');
+  animarElemento(alvo, 'muro', 'dark-animado');
+}
+
+function animarCampoRemover(efeito) {
+  const alvo = currentPlayer == 1 ? 2 : 1;
+  animarElemento(alvo, efeito, 'dark-animado');
+}
+
+function animarCampoRemoverVarios(recurso) {
+  animarCampoRemover(recurso); // mesma lógica
+}
+
+// Otimização da gangorra tudo
+function animarCampoGangorraTudo() {
+  const recursos = ['tijolos', 'armas', 'cristais', 'construtores', 'soldados', 'magos'];
+  const inimigo = currentPlayer == 1 ? 2 : 1;
+  const jogador = currentPlayer;
+
+  recursos.forEach(recurso => {
+    animarElemento(inimigo, recurso, 'dark-animado');
+    animarElemento(jogador, recurso, 'brilho-animado');
+  });
+}
 
 
 
