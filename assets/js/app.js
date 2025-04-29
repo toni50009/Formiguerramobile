@@ -620,7 +620,6 @@ function aplicarEfeito(nomeCarta){
   const jogadorAlvo = players[njogadorAlvo];
   const efeito = carta.efeito;
   const recurso = carta.custo.recurso;
-  const qtdRecurso = carta.custo.quantidade;
 
 
   checarDados(jogador,efeito,jogadorAlvo);
@@ -793,37 +792,6 @@ function verificarJogador(){
 
 
 
-
-
-//CHAMA PROXIMA RODADA
-function proximaRodada(){
-
-  if(checarCondicaoVitoria() == true){
-    return;
-  }
-
-  verificarJogador();
-  currentPlayer = currentPlayer === 1 ? 2 : 1;
-  verificarCusto();
-  
-  if(currentPlayer === 1){
-  habilitarSelecao();
-  habilitarBotao();
-  }
-  if(currentPlayer === 2){
-    botJoga();
-  }
-  attUI();
-}
-
-
-
-
-
-
-
-
-
 function jogarCarta(el){
 
 
@@ -836,7 +804,10 @@ function jogarCarta(el){
   if (players[currentPlayer][recurso] >= custo) {
     players[currentPlayer][recurso] -= custo;
     console.log(`Custo depois de ser descontado: ${players[currentPlayer][recurso]}`);
-    aplicarEfeito(nomeCarta);
+    setTimeout(() => {
+      aplicarEfeito(nomeCarta);  
+   }, 1000);
+    proximaRodada();
   } else {
     alert('Você não tem recursos suficientes!');
   }
@@ -907,11 +878,62 @@ function animarCampoGangorraTudo() {
 
 
 
+
+
+
+
 //Começa o jogo
 
 gerarCartas();
 centralizarTabuleiro();
 
 
+
+//VERIFICAR QUAL JOGADOR RECEBE RECURSOS AO FINAL DA RODADA
+function verificarJogador(){
+  if(currentPlayer === 1){
+    const p = players[2];
+    p.tijolos += p.construtores;
+    p.armas += p.soldados;
+    p.cristais += p.magos;
+    }else{
+      const p = players[1];
+      p.tijolos += p.construtores;
+      p.armas += p.soldados;
+      p.cristais += p.magos;
+    }
+}
+
+
+//CHAMA PROXIMA RODADA
+function proximaRodada(){
+
+
+  verificarJogador();
+  currentPlayer = currentPlayer === 1 ? 2 : 1;
+
+  if(currentPlayer === 2){
+    botJoga();
+  }
+  attUI();
+}
+
+
+//FAZER O BOT JOGAR
+function botJoga(){
+  const indiceCartaBot = Math.floor(Math.random() * cartas.length);
+  const bot = players[currentPlayer];
+
+  const cartaBot = cartas[indiceCartaBot];
+  const custo = cartaBot.custo.quantidade;
+  const recurso = cartaBot.custo.recurso;
+
+
+  if (bot[recurso] >= custo) {
+    bot[recurso] -= custo;
+    console.log(`Custo depois de ser descontado: ${bot[recurso]}`);
+    aplicarEfeito(cartaBot.nome);
+  }
+}
 
 
