@@ -13,28 +13,28 @@
 
     <div class="enemy-info container bg-black border border-danger d-flex justify-content-center align-items-center text-center p-2">
       <div class="enemy-info-tables d-flex flex-row gap-2">
-        <div class="recursos-inimigo border border-warning p-2">
+        <div class="recursos-inimigo border border-warning p-2" style="background-color: #d6c68f;">
           <strong class="title">Recursos Inimigos</strong>
-          <p class="table-item" id="p2-tijolos">Tijolos: <strong>5</strong></p>
-          <p class="table-item"id="p2-armas">Armas: <strong>5</strong></p>
-          <p class="table-item" id="p2-cristais">Cristais: <strong>5</strong></p>
+          <p class="table-item" id="p2-tijolos">🧱Tijolos: <strong>5</strong></p>
+          <p class="table-item"id="p2-armas">⚔️Armas: <strong>5</strong></p>
+          <p class="table-item" id="p2-cristais">💎Cristais: <strong>5</strong></p>
         </div>
-        <div class="status-inimigo border border-warning p-2">
+        <div class="status-inimigo border border-warning p-2" style="background-color: #d6c68f;">
           <strong class="title">Castelo Inimigo</strong>
-          <p class="lh-1" id="p2-castelo">Castelo: <strong>30</strong></p>
-          <p class="lh-1" id="p2-muro">Muro: <strong>10</strong></p>
+          <p class="lh-1 table-item" id="p2-castelo">Castelo: <strong>30</strong></p>
+          <p class="lh-1 table-item" id="p2-muro">Muro: <strong>10</strong></p>
         </div>
-        <div class="fornecedores-inimigo border border-warning p-2">
+        <div class="fornecedores-inimigo border border-warning p-2" style="background-color: #d6c68f;">
           <strong class="title">Fornecedores Inimigos</strong>
-          <p class="table-item" id="p2-construtores">Construtores: <strong>2</strong></p>
-          <p class="table-item" id="p2-soldados">Soldados: <strong>2</strong></p>
-          <p class="table-item" id="p2-magos">Magos: <strong>2</strong></p>
+          <p class="table-item" id="p2-construtores">🔨Construtores: <strong>2</strong></p>
+          <p class="table-item" id="p2-soldados">🛡️Soldados: <strong>2</strong></p>
+          <p class="table-item" id="p2-magos">🧙Magos: <strong>2</strong></p>
         </div> 
       </div>
     </div>
 
-    <div class="tabuleiro-wrapper container position-relative d-flex justify-content-center align-items-center flex-grow-1 mt-3 mb-3">
-      <div class="tabuleiro container d-flex align-items-center justify-content-center" id="tabuleiro">
+    <div class="tabuleiro-wrapper container position-relative d-flex justify-content-center align-items-center flex-grow-1">
+      <div class="tabuleiro container d-flex align-items-center justify-content-center mt-3 mb-3" id="tabuleiro">
         <div class="card-tabuleiro card">
           <img src="/assets/img/icone.png" class="card-img-top" alt="Imagem do Tabuleiro" style="opacity: 0.5;">
           <div class="card-body">
@@ -71,22 +71,22 @@
     </div>
       <div class="player-info container bg-black border border-danger d-flex justify-content-center align-items-center text-center p-2">
         <div class="player-info-tables d-flex flex-row gap-2">
-          <div class="recursos-player border border-warning p-2">
-            <strong class="title">Recursos Jogador</strong>
-            <p class="table-item" id="p1-tijolos">Tijolos: <strong>55</strong></p>
-            <p class="table-item" id="p1-armas">Armas: <strong>55</strong></p>
-            <p class="table-item" id="p1-cristais">Cristais: <strong>55</strong></p>
+          <div class="recursos-player border border-warning p-2"  style="background-color: #d6c68f;">
+            <strong class="title">Recursos</strong>
+            <p class="table-item" id="p1-tijolos">🧱Tijolos: <strong>55</strong></p>
+            <p class="table-item" id="p1-armas">⚔️Armas: <strong>55</strong></p>
+            <p class="table-item" id="p1-cristais">💎Cristais: <strong>55</strong></p>
           </div>
-          <div class="status-player border border-warning p-2">
-            <strong class="title">Castelo Jogador</strong>
+          <div class="status-player border border-warning p-2" style="background-color: #d6c68f;">
+            <strong class="title">Castelo</strong>
             <p class="table-item" id="p1-castelo">Castelo: <strong>30</strong></p>
             <p class="table-item" id="p1-muro">Muro: <strong>10</strong></p>
           </div>
-          <div class="fornecedores-player border border-warning p-2">
-            <strong class="title">Fornecedores Jogador</strong>
-            <p class="table-item" id="p1-construtores">Construtores: <strong>2</strong></p>
-            <p class="table-item" id="p1-soldados">Soldados: <strong>2</strong></p>
-            <p class="table-item" id="p1-magos">Magos: <strong>2</strong></p>
+          <div class="fornecedores-player border border-warning p-2" style="background-color: #d6c68f;">
+            <strong class="title">Fornecedores</strong>
+            <p class="table-item" id="p1-construtores">🔨Construtores: <strong>2</strong></p>
+            <p class="table-item" id="p1-soldados">🛡️Soldados: <strong>2</strong></p>
+            <p class="table-item" id="p1-magos">🧙Magos: <strong>2</strong></p>
           </div> 
         </div>
       </div>
@@ -97,5 +97,47 @@
 
 
   <script src="assets/js/app.js"></script>
+  <script>
+    const imagensParaPrecarregar = [
+      '/assets/img/alistamento/alistamento.webp',
+      '/assets/img/arqueiro/arqueiro.webp',
+      '/assets/img/ataquedireto/ataquedireto.webp',
+      '/assets/img/ataquetriplo/ataquetriplo.webp',
+      '/assets/img/babilonia/babilonia.webp',
+      '/assets/img/catapulta/catapulta.webp',
+      '/assets/img/conjurararmas/conjurararmas.webp',
+      '/assets/img/conjurarcristais/conjurarcristais.webp',
+      '/assets/img/conjurartijolos/conjurartijolos.webp',
+      '/assets/img/contrabando/contrabando.webp',
+      '/assets/img/demolirarmas/demolirarmas.webp',
+      '/assets/img/demolircristais/demolircristais.webp',
+      '/assets/img/demolirtijolos/demolirtijolos.webp',
+      '/assets/img/fortaleza/fortaleza.webp',
+      '/assets/img/hannya/hannya.webp',
+      '/assets/img/incendiar/incendiar.webp',
+      '/assets/img/injustica/injustica.webp',
+      '/assets/img/maldicao/maldicao.webp',
+      '/assets/img/merlin/merlin.webp',
+      '/assets/img/montagrilos/montagrilos.webp',
+      '/assets/img/muralha/muralha.webp',
+      '/assets/img/murodebarro/murodebarro.webp',
+      '/assets/img/pixies/pixies.webp',
+      '/assets/img/musgorigido/musgorigido.webp',
+      '/assets/img/ponteprotegida/ponteprotegida.webp',
+      '/assets/img/primeiropiso/primeiropiso.webp',
+      '/assets/img/surpreender/surpreender.webp',
+      '/assets/img/tamandua/tamandua.webp',
+      '/assets/img/torredevigia/torredevigia.webp',
+      '/assets/img/universidade/universidade.webp',
+    ];
+    
+    const imagens = [];
+    imagensParaPrecarregar.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+      imagens.push(img);
+    });
+    </script>
+
 </body>
 </html>

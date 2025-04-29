@@ -11,7 +11,11 @@
   border: 4px solid black;
 }
 
-p, .title ,button{
+.title{
+  color:black;
+}
+
+p,button{
   font-size: 0.7rem !important;
 }
 
@@ -22,7 +26,8 @@ p{
 
 .table-item{
   line-height: 0.8rem !important;
-  font-size: 0.7rem !important;
+  font-size: 0.8rem !important;
+  color: black;
 }
 
 @media(max-width: 404px){
@@ -35,7 +40,7 @@ p{
   background-color: #e0ae08;
   border: 2px solid transparent;
   border-radius: 0.5rem;
-  max-width: 15% !important;
+  max-width: 100% !important;
   height: auto;
   width:25%;
   height: auto;
@@ -49,6 +54,12 @@ p{
 
 .card-text{
   font-size: 0.6rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.card-text-tabuleiro{
+  font-size: 0.8rem !important;
   margin: 0 !important;
   padding: 0 !important;
 }
@@ -97,10 +108,10 @@ p{
 
 
 .card-tabuleiro{
-  background-color: #e0ae08;
+  background-color: #d6c68f;
   border: 2px solid transparent;
   border-radius: 0.5rem;
-  max-width: 60% !important;
+  max-width: 180px !important;
   text-align: center;
 }
 
@@ -137,15 +148,15 @@ p{
 @keyframes brilho-contorno{
   0% {
     transform: scale(1);
-    color: #0bca44;
+    color: black;
   }
   50% {
-    transform: scale(1.7);
-    color: rgba(217, 198, 250, 0.8);
+    transform: scale(1.2);
+    color: #0bca44;
   }
   100% {
     transform: scale(1);
-    color: #0bca44;
+    color: black;
   }
 }
 
@@ -156,15 +167,15 @@ p{
 @keyframes dark-contorno{
   0% {
     transform: scale(1);
-    color: #0bca44;
+    color: black;
   }
   50% {
-    transform: scale(1.6);
+    transform: scale(1.2);
     color: rgba(209, 24, 24, 0.8);
   }
   100% {
     transform: scale(1);
-    color: #0bca44;
+    color: black;
   }
 }
 
@@ -175,7 +186,7 @@ p{
 @keyframes dark-contorno-recurso{
   0% {
     transform: scale(1);
-    color: #0bca44;
+    color: black;
   }
   50% {
     transform: scale(1.1);
@@ -183,7 +194,7 @@ p{
   }
   100% {
     transform: scale(1);
-    color: #0bca44;
+    color: black;
   }
 }
 

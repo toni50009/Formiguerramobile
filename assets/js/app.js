@@ -466,21 +466,22 @@ let currentPlayer = 1;
 //Gerar carta aleatória
 function gerarCartas(){
   const maoJogador = document.querySelectorAll('.card-player');
-  maoJogador.forEach(el => {
-    let indice = Math.floor(Math.random() * cartas.length);
-    const cartaAleatoria = cartas[indice];
+  let indicesDisponiveis = Array.from(cartas.keys());
 
-    el.dataset.cartaId = indice;
+  maoJogador.forEach(el => {
+    let indiceAleatorio = Math.floor(Math.random() * indicesDisponiveis.length);
+    const indiceCarta = indicesDisponiveis[indiceAleatorio];
+    const cartaAleatoria = cartas[indiceCarta];
+
+    indicesDisponiveis.splice(indiceAleatorio, 1); // Remove o índice já utilizado
+
+    el.dataset.cartaId = indiceCarta;
 
     el.innerHTML = `
           <img src="${cartaAleatoria.imagem}" class="card-img-top" alt="${cartaAleatoria.nome}">
-          <div class="card-body">
-            <p class="card-text"><strong>${cartaAleatoria.nomecompleto}</strong></p>
-          </div>
     `;
 
   });
-
 
 }
 
@@ -556,8 +557,8 @@ function mostrarCarta(el){
       <img src="${carta.imagem}" class="card-img-top" alt="${carta.nome}">
       <div class="card-body">
           <h5 class="card-title"><strong>${carta.nomecompleto}</strong></h5>
-          <p class="card-text"><strong>${gerarDescricao(carta)}</strong></p>
-          <p class="card-text"><strong>${gerarTextoCusto(carta)}</strong></p>
+          <p class="card-text-tabuleiro"><strong>${gerarDescricao(carta)}</strong></p>
+          <p class="card-text-tabuleiro"><strong>${gerarTextoCusto(carta)}</strong></p>
           <button class="btn btn-card text-white bg-success" onclick="jogarCarta(this)">Jogar</button>
           <button class="btn btn-card text-white bg-danger">Trocar</button>
       </div>
@@ -590,14 +591,14 @@ function mostrarCarta(el){
 function attUI(){
 
   for(let i = 1; i <= 2; i++){
-    document.getElementById(`p${i}-castelo`).textContent = `Castelo: ${players[i].castelo}`;
-    document.getElementById(`p${i}-muro`).textContent = `Muro: ${players[i].muro}`;
-    document.getElementById(`p${i}-tijolos`).textContent = `Tijlos: ${players[i].tijolos}`;
-    document.getElementById(`p${i}-construtores`).textContent = `Construtores: ${players[i].construtores}`;
-    document.getElementById(`p${i}-soldados`).textContent = `Soldados: ${players[i].soldados}`;
-    document.getElementById(`p${i}-armas`).textContent = `Armas: ${players[i].armas}`;
-    document.getElementById(`p${i}-cristais`).textContent = `Cristais: ${players[i].cristais}`;
-    document.getElementById(`p${i}-magos`).textContent = `Magos: ${players[i].magos}`;
+    document.getElementById(`p${i}-castelo`).innerHTML = `Castelo: <strong>${players[i].castelo}</strong>`;
+    document.getElementById(`p${i}-muro`).innerHTML = `Muro: <strong>${players[i].muro}</strong>`;
+    document.getElementById(`p${i}-tijolos`).innerHTML = `🧱Tijlos: <strong>${players[i].tijolos}</strong>`;
+    document.getElementById(`p${i}-construtores`).innerHTML = `🔨Construtores: <strong>${players[i].construtores}</strong>`;
+    document.getElementById(`p${i}-soldados`).innerHTML = `🛡️Soldados: <strong>${players[i].soldados}</strong>`;
+    document.getElementById(`p${i}-armas`).innerHTML = `⚔️Armas: <strong>${players[i].armas}</strong>`;
+    document.getElementById(`p${i}-cristais`).innerHTML = `💎Cristais: <strong>${players[i].cristais}</strong>`;
+    document.getElementById(`p${i}-magos`).innerHTML = `🧙Magos: <strong>${players[i].magos}</strong>`;
   }
 }
 
