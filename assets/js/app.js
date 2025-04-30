@@ -806,9 +806,16 @@ function jogarCarta(el){
     document.getElementById("btn-jogar").classList.add('invisivel');
     document.getElementById("btn-trocar").classList.add('invisivel');
     document.querySelector('.card-tabuleiro').classList.add('animar-carta-jogada-primeira');
-    setTimeout(() => {
+    document.getElementById('somflip').play();
+  
+    setTimeout(() =>{
+      tocarSom(nomeCarta);
+      aplicarEfeito(nomeCarta);
+    },1000);
+  
+    setTimeout(() =>{
       document.querySelector('.card-tabuleiro').classList.remove('animar-carta-jogada-primeira');
-    }, 500);
+  },1000);  
     setTimeout(() => {
       aplicarEfeito(nomeCarta);  
    }, 1000);
@@ -817,6 +824,7 @@ function jogarCarta(el){
     alert('Você não tem recursos suficientes!');
   }
 }
+
 
 
 
@@ -880,10 +888,52 @@ function animarCampoGangorraTudo() {
 }
 
 
+//TOCAR O SOM CORRESPONDENTE
+function tocarSom(el){
+  const nomeCarta = el;
+  const carta = cartas.find(c => c.nome === nomeCarta);
+  const efeito = carta.efeito;
+
+  switch (efeito.tipo) {
+    case 'adicionar':
+      if (efeito.alvo === 'castelo' || efeito.alvo === 'muro') {
+        document.getElementById("somcastelo").play();
+      } else {
+        document.getElementById("somadicionar").play();
+      }
+      break;
+  
+    case 'dano':
+      document.getElementById("somdano").play();
+      break;
+  
+    case 'gangorra':
+      document.getElementById("somgangorra").play();
+      break;
+
+      case 'gangorratudo':
+        document.getElementById("sommaldicao").play();
+        break;
+  
+    case 'remover':
+      document.getElementById("somremover").play();
+      break;
+  }
+}
 
 
+//DESABILITAR SELECAO 
+function desabilitarSelecao(){
+  const classeCampo = document.querySelector('.main');
+  classeCampo.classList.add('naoclicavel');
+}
 
 
+//HABILITAR NOVAMENTE
+function habilitarSelecao(){
+  const classeCampo = document.querySelector('.main');
+  classeCampo.classList.remove('naoclicavel');
+}
 
 
 
