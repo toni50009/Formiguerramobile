@@ -559,8 +559,8 @@ function mostrarCarta(el){
           <h5 class="card-title"><strong>${carta.nomecompleto}</strong></h5>
           <p class="card-text-tabuleiro"><strong>${gerarDescricao(carta)}</strong></p>
           <p class="card-text-tabuleiro"><strong>${gerarTextoCusto(carta)}</strong></p>
-          <button class="btn btn-card text-white bg-success" onclick="jogarCarta(this)">Jogar</button>
-          <button class="btn btn-card text-white bg-danger">Trocar</button>
+          <button class="btn btn-card text-white bg-success" id="btn-jogar" onclick="jogarCarta(this)">Jogar</button>
+          <button class="btn btn-card text-white bg-danger" id="btn-trocar">Trocar</button>
       </div>
     
     </div>
@@ -803,7 +803,12 @@ function jogarCarta(el){
 
   if (players[currentPlayer][recurso] >= custo) {
     players[currentPlayer][recurso] -= custo;
-    console.log(`Custo depois de ser descontado: ${players[currentPlayer][recurso]}`);
+    document.getElementById("btn-jogar").classList.add('invisivel');
+    document.getElementById("btn-trocar").classList.add('invisivel');
+    document.querySelector('.card-tabuleiro').classList.add('animar-carta-jogada-primeira');
+    setTimeout(() => {
+      document.querySelector('.card-tabuleiro').classList.remove('animar-carta-jogada-primeira');
+    }, 500);
     setTimeout(() => {
       aplicarEfeito(nomeCarta);  
    }, 1000);

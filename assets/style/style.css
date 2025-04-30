@@ -180,7 +180,7 @@ p{
 }
 
 .dark-animado{
-  animation: dark-contorno 1s linear
+  animation: dark-contorno 1s linear;
 }
 
 @keyframes dark-contorno-recurso{
@@ -199,7 +199,30 @@ p{
 }
 
 
+.animar-carta-jogada-primeira{
+  animation: el-grow 0.5s linear;
+}
+
+
+@keyframes el-grow{
+  0% {
+    transform: scale(0.5);
+  }
+
+  50% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 
 .dark-animado-recurso{
   animation: dark-contorno-recurso 1s linear
+}
+
+
+.invisivel{
+  display: none;
 }
