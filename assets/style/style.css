@@ -134,6 +134,24 @@ p{
 }
 
 
+.txtBox{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1rem 2rem;
+  background-color: #4b2e1a;
+  color: #d8b28e;
+  font-size: 2.2rem;
+  font-weight: bold;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  border: 2px solid #8b5a2b;
+  font-family: 'Georgia', serif;
+  z-index: 2;
+  text-align: center;
+}
+
 
 
 

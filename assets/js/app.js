@@ -775,23 +775,6 @@ function gangorraTudo(jogador,jogadorAlvo,efeito){
 
 
 
-//VERIFICAR QUAL JOGADOR RECEBE RECURSOS AO FINAL DA RODADA
-function verificarJogador(){
-  if(currentPlayer === 1){
-    const p = players[2];
-    p.tijolos += p.construtores;
-    p.armas += p.soldados;
-    p.cristais += p.magos;
-    }else{
-      const p = players[1];
-      p.tijolos += p.construtores;
-      p.armas += p.soldados;
-      p.cristais += p.magos;
-    }
-}
-
-
-
 function jogarCarta(el){
 
 
@@ -803,6 +786,7 @@ function jogarCarta(el){
 
   if (players[currentPlayer][recurso] >= custo) {
     players[currentPlayer][recurso] -= custo;
+    desabilitarSelecao();
     document.getElementById("btn-jogar").classList.add('invisivel');
     document.getElementById("btn-trocar").classList.add('invisivel');
     document.querySelector('.card-tabuleiro').classList.add('animar-carta-jogada-primeira');
@@ -815,11 +799,9 @@ function jogarCarta(el){
   
     setTimeout(() =>{
       document.querySelector('.card-tabuleiro').classList.remove('animar-carta-jogada-primeira');
-  },1000);  
-    setTimeout(() => {
-      aplicarEfeito(nomeCarta);  
-   }, 1000);
-    proximaRodada();
+      proximaRodada();
+
+  },2000);  
   } else {
     alert('Você não tem recursos suficientes!');
   }
@@ -922,6 +904,32 @@ function tocarSom(el){
 }
 
 
+//COMEÇAR A VEZ DO PLAYER E DO BOT
+function comecarVez(){
+  const textBox = document.createElement('div');
+  const pai = document.querySelector('.tabuleiro');
+
+  textBox.className = 'txtBox';
+  textBox.textContent = 'Sua Vez';
+  pai.appendChild(textBox);
+  desabilitarSelecao();
+
+  if(currentPlayer === 1){
+    document.getElementById('p1-tijolos').classList.add('brilho-animado');
+    document.getElementById('p1-armas').classList.add('brilho-animado');
+    document.getElementById('p1-cristais').classList.add('brilho-animado');
+    setTimeout(() =>{
+      document.getElementById('p1-tijolos').classList.remove('brilho-animado');
+      document.getElementById('p1-armas').classList.remove('brilho-animado');
+      document.getElementById('p1-cristais').classList.remove('brilho-animado');
+      textBox.remove();
+      habilitarSelecao();
+    },1000);
+  }
+}
+
+
+
 //DESABILITAR SELECAO 
 function desabilitarSelecao(){
   const classeCampo = document.querySelector('.main');
@@ -938,7 +946,8 @@ function habilitarSelecao(){
 
 
 //Começa o jogo
-
+comecarVez();
+attUI();
 gerarCartas();
 centralizarTabuleiro();
 
@@ -967,6 +976,10 @@ function proximaRodada(){
   verificarJogador();
   currentPlayer = currentPlayer === 1 ? 2 : 1;
 
+  if(currentPlayer === 1){
+    habilitarSelecao();
+  }
+
   if(currentPlayer === 2){
     botJoga();
   }
@@ -975,20 +988,59 @@ function proximaRodada(){
 
 
 //FAZER O BOT JOGAR
-function botJoga(){
-  const indiceCartaBot = Math.floor(Math.random() * cartas.length);
+function botJoga() {
   const bot = players[currentPlayer];
+  let cartaBot;
+  let custo;
+  let recurso;
+  let tentativas = 0;
+  const maxTentativas = cartas.length;
 
-  const cartaBot = cartas[indiceCartaBot];
-  const custo = cartaBot.custo.quantidade;
-  const recurso = cartaBot.custo.recurso;
+  while (tentativas < maxTentativas) {
+    const indiceCartaBot = Math.floor(Math.random() * cartas.length);
+    cartaBot = cartas[indiceCartaBot];
+    custo = cartaBot.custo.quantidade;
+    recurso = cartaBot.custo.recurso;
 
+    if (bot[recurso] >= custo) {
+      break; // encontrou uma carta válida, sai do loop
+    }
 
-  if (bot[recurso] >= custo) {
+    tentativas++;
+  }
+
+  if (tentativas < maxTentativas) {
     bot[recurso] -= custo;
-    console.log(`Custo depois de ser descontado: ${bot[recurso]}`);
-    aplicarEfeito(cartaBot.nome);
+    mostrarCartaBot(cartaBot);
+    document.getElementById("somflip").play();
+    document.querySelector('.card-tabuleiro').classList.add('animar-carta-jogada-primeira');
+    setTimeout(() => {
+      tocarSom(cartaBot.nome);
+      aplicarEfeito(cartaBot.nome);
+    }, 1000);
+    setTimeout(() => {
+      document.querySelector('.card-tabuleiro').classList.remove('animar-carta-jogada-primeira');
+      proximaRodada();
+    }, 2000);
+  } else {
+    console.log("Bot não possui recursos suficientes para jogar nenhuma carta.");
   }
 }
 
 
+//Mostrar Carta do Bot
+function mostrarCartaBot(cartaBot){
+  const cartaId = cartaBot.nome;
+  const tabuleiro = document.getElementById('tabuleiro');
+  
+  tabuleiro.innerHTML = `
+    <div class="card-tabuleiro card" data-carta-id="${cartaId}">
+      <img src="${cartaBot.imagem}" class="card-img-top" alt="${cartaBot.nome}">
+      <div class="card-body">
+          <h5 class="card-title"><strong>${cartaBot.nomecompleto}</strong></h5>
+          <p class="card-text-tabuleiro"><strong>${gerarDescricao(cartaBot)}</strong></p>
+          <p class="card-text-tabuleiro"><strong>${gerarTextoCusto(cartaBot)}</strong></p>
+      </div>
+    </div>
+  `;
+}
