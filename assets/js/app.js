@@ -560,12 +560,59 @@ function mostrarCarta(el){
           <p class="card-text-tabuleiro"><strong>${gerarDescricao(carta)}</strong></p>
           <p class="card-text-tabuleiro"><strong>${gerarTextoCusto(carta)}</strong></p>
           <button class="btn btn-card text-white bg-success" id="btn-jogar" onclick="jogarCarta(this)">Jogar</button>
-          <button class="btn btn-card text-white bg-danger" id="btn-trocar">Trocar</button>
+           <button class="btn btn-card text-white bg-danger" id="btn-trocar" onclick="confirmarTroca(this)">Trocar</button>
       </div>
     
     </div>
   `;
 }
+
+
+function confirmarTroca() {
+  const textBox = document.createElement('div');
+  const pai = document.querySelector('.tabuleiro');
+  textBox.className = 'txtBox';
+  textBox.innerHTML = `
+  <p class="card-text-tabuleiro"><strong>Trocar e ganhar +1 de todos os recursos?</strong></p>
+  <button class="btn btn-card text-white bg-success" onclick="trocarCarta()">Sim</button>
+  <button class="btn btn-card text-white bg-danger" onclick="cancelarTroca()">Não</button>`;
+  pai.appendChild(textBox);
+}
+
+function cancelarTroca() {
+  const textBox = document.querySelector('.txtBox');
+  textBox.remove();
+}
+
+function trocarCarta() {
+  const cardEl = document.querySelector('.card-tabuleiro');
+  const cartaId = cardEl.dataset.cartaId;
+  const cartaDaMao = document.querySelector(`.card-player[data-carta-id="${cartaId}"]`);
+
+  // Adiciona +1 de cada recurso ao jogador atual
+  document.getElementById('p1-tijolos').classList.add('brilho-animado');
+  document.getElementById('p1-armas').classList.add('brilho-animado');
+  document.getElementById('p1-cristais').classList.add('brilho-animado');
+  const player = players[currentPlayer];
+  player.armas += 1;
+  player.tijolos += 1;
+  player.cristais += 1;
+  attUI(); // Atualiza os dados na interface
+  setTimeout(() => {
+    document.getElementById('p1-tijolos').classList.remove('brilho-animado');
+    document.getElementById('p1-armas').classList.remove('brilho-animado');
+    document.getElementById('p1-cristais').classList.remove('brilho-animado');
+  }, 1000);
+      // Substitui carta da mão
+  novaCarta(cartaDaMao);
+
+  // Esconde tabuleiro
+  document.getElementById('tabuleiro').innerHTML = ``;
+  proximaRodada();
+
+}
+
+
 
 
 function novaCarta(el) {
