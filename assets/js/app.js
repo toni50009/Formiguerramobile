@@ -440,9 +440,9 @@ const players = {
   1: {
     castelo: 30,
     muro: 10,
-    tijolos: 55,
-    armas: 55,
-    cristais: 55,
+    tijolos: 5,
+    armas: 5,
+    cristais: 5,
     construtores: 2,
     soldados: 2,
     magos: 2
@@ -499,7 +499,7 @@ function gerarDescricao(carta){
       return `Causa ${quantidade} de dano`;
 
       case 'adicionar':
-      return `+ ${quantidade} de ${alvo}`;
+      return `+ ${quantidade} de ${Array.isArray(alvo) ? alvo.join(', ') : alvo}`;
 
       case 'remover':
       return `- ${quantidade} de ${alvo} do inimigo`;
@@ -568,23 +568,27 @@ function mostrarCarta(el){
 }
 
 
-// function novaCarta(el){
-//   let novaCarta = cartas[Math.floor(Math.random() * cartas.length)];
-//   const cartaId = el.dataset.cartaId;
+function novaCarta(el) {
+  let indicesDisponiveis = Array.from(cartas.keys());
+  
+  // Remove os IDs das cartas que já estão nas mãos
+  document.querySelectorAll('.card-player').forEach(cartaEl => {
+    const idAtual = parseInt(cartaEl.dataset.cartaId);
+    const pos = indicesDisponiveis.indexOf(idAtual);
+    if (pos > -1) indicesDisponiveis.splice(pos, 1);
+  });
 
-//     el.src = novaCarta.imagem;
-//     el.alt = novaCarta.nome;
-//     el.dataset.nome = novaCarta.nome;
-//     el.dataset.cartaId = novaCarta.nome;
+  // Gera nova carta aleatória entre os disponíveis
+  let indiceAleatorio = Math.floor(Math.random() * indicesDisponiveis.length);
+  const indiceCarta = indicesDisponiveis[indiceAleatorio];
+  const cartaAleatoria = cartas[indiceCarta];
 
-//     el.innerHTML = `
-//           <img src="${cartaAleatoria.imagem}" class="card-img-top" alt="${cartaAleatoria.nome}">
-//           <div class="card-body">
-//             <p class="card-text"><strong>${cartaAleatoria.nomecompleto}</strong></p>
-//           </div>
-//     `;
-
-// }
+  // Atribui a nova carta ao elemento
+  el.dataset.cartaId = indiceCarta;
+  el.innerHTML = `
+    <img src="${cartaAleatoria.imagem}" class="card-img-top" alt="${cartaAleatoria.nome}">
+  `;
+}
 
 
 //ATUALIZAR DADOS INTERFACE
@@ -799,6 +803,12 @@ function jogarCarta(el){
   
     setTimeout(() =>{
       document.querySelector('.card-tabuleiro').classList.remove('animar-carta-jogada-primeira');
+      const maoJogador = document.querySelectorAll('.card-player');
+      maoJogador.forEach(cartaEl => {
+        if (cartaEl.dataset.cartaId === cartaId) {
+          novaCarta(cartaEl); // substitui pela nova carta
+        }
+      });
       proximaRodada();
 
   },2000);  
