@@ -14,6 +14,36 @@
   <audio id="somflip" src="/assets/effects/flip.mp3" preload="auto"></audio>
   <audio id="somcastelo" src="/assets/effects/castelo.mp3" preload="auto"></audio>
   <audio id="somdescartar" src="/assets/effects/descartar.mp3" preload="auto"></audio>
+  <link rel="preload" as="image" href="/assets/img/alistamento/alistamento.webp">
+  <link rel="preload" as="image" href="/assets/img/arqueiro/arqueiro.webp">
+  <link rel="preload" as="image" href="/assets/img/ataquedireto/ataquedireto.webp">
+  <link rel="preload" as="image" href="/assets/img/ataquetriplo/ataquetriplo.webp">
+  <link rel="preload" as="image" href="/assets/img/babilonia/babilonia.webp">
+  <link rel="preload" as="image" href="/assets/img/catapulta/catapulta.webp">
+  <link rel="preload" as="image" href="/assets/img/conjurararmas/conjurararmas.webp">
+  <link rel="preload" as="image" href="/assets/img/conjurarcristais/conjurarcristais.webp">
+  <link rel="preload" as="image" href="/assets/img/conjurartijolos/conjurartijolos.webp">
+  <link rel="preload" as="image" href="/assets/img/contrabando/contrabando.webp">
+  <link rel="preload" as="image" href="/assets/img/demolirarmas/demolirarmas.webp">
+  <link rel="preload" as="image" href="/assets/img/demolircristais/demolircristais.webp">
+  <link rel="preload" as="image" href="/assets/img/demolirtijolos/demolirtijolos.webp">
+  <link rel="preload" as="image" href="/assets/img/fortaleza/fortaleza.webp">
+  <link rel="preload" as="image" href="/assets/img/hannya/hannya.webp">
+  <link rel="preload" as="image" href="/assets/img/incendiar/incendiar.webp">
+  <link rel="preload" as="image" href="/assets/img/injustica/injustica.webp">
+  <link rel="preload" as="image" href="/assets/img/maldicao/maldicao.webp">
+  <link rel="preload" as="image" href="/assets/img/merlin/merlin.webp">
+  <link rel="preload" as="image" href="/assets/img/montagrilos/montagrilos.webp">
+  <link rel="preload" as="image" href="/assets/img/muralha/muralha.webp">
+  <link rel="preload" as="image" href="/assets/img/murodebarro/murodebarro.webp">
+  <link rel="preload" as="image" href="/assets/img/pixies/pixies.webp">
+  <link rel="preload" as="image" href="/assets/img/musgorigido/musgorigido.webp">
+  <link rel="preload" as="image" href="/assets/img/ponteprotegida/ponteprotegida.webp">
+  <link rel="preload" as="image" href="/assets/img/primeiropiso/primeiropiso.webp">
+  <link rel="preload" as="image" href="/assets/img/surpreender/surpreender.webp">
+  <link rel="preload" as="image" href="/assets/img/tamandua/tamandua.webp">
+  <link rel="preload" as="image" href="/assets/img/torredevigia/torredevigia.webp">
+  <link rel="preload" as="image" href="/assets/img/universidade/universidade.webp">
 </head>
 <body class="bg-dark text-white">
 
@@ -44,7 +74,7 @@
     <div class="tabuleiro-wrapper container position-relative d-flex justify-content-center align-items-center flex-grow-1">
       <div class="tabuleiro container d-flex align-items-center justify-content-center mt-3 mb-3" id="tabuleiro">
         <div class="card-tabuleiro card">
-          <img src="/assets/img/icone.png" class="card-img-top" alt="Imagem do Tabuleiro" style="opacity: 0.5;">
+          <img src="/assets/img/icone.webp" class="card-img-top" alt="Imagem do Tabuleiro" style="opacity: 0.5;">
           <div class="card-body">
             <p class="card-text"><strong>Tabuleiro</strong></p>
             <p class="card-text"><strong>Clique na carta de sua mão, que ela aparecerá aqui com detalhes</strong></p>
@@ -105,47 +135,7 @@
 
 
   <script src="assets/js/app.js"></script>
-  <script>
-    const imagensParaPrecarregar = [
-      '/assets/img/alistamento/alistamento.webp',
-      '/assets/img/arqueiro/arqueiro.webp',
-      '/assets/img/ataquedireto/ataquedireto.webp',
-      '/assets/img/ataquetriplo/ataquetriplo.webp',
-      '/assets/img/babilonia/babilonia.webp',
-      '/assets/img/catapulta/catapulta.webp',
-      '/assets/img/conjurararmas/conjurararmas.webp',
-      '/assets/img/conjurarcristais/conjurarcristais.webp',
-      '/assets/img/conjurartijolos/conjurartijolos.webp',
-      '/assets/img/contrabando/contrabando.webp',
-      '/assets/img/demolirarmas/demolirarmas.webp',
-      '/assets/img/demolircristais/demolircristais.webp',
-      '/assets/img/demolirtijolos/demolirtijolos.webp',
-      '/assets/img/fortaleza/fortaleza.webp',
-      '/assets/img/hannya/hannya.webp',
-      '/assets/img/incendiar/incendiar.webp',
-      '/assets/img/injustica/injustica.webp',
-      '/assets/img/maldicao/maldicao.webp',
-      '/assets/img/merlin/merlin.webp',
-      '/assets/img/montagrilos/montagrilos.webp',
-      '/assets/img/muralha/muralha.webp',
-      '/assets/img/murodebarro/murodebarro.webp',
-      '/assets/img/pixies/pixies.webp',
-      '/assets/img/musgorigido/musgorigido.webp',
-      '/assets/img/ponteprotegida/ponteprotegida.webp',
-      '/assets/img/primeiropiso/primeiropiso.webp',
-      '/assets/img/surpreender/surpreender.webp',
-      '/assets/img/tamandua/tamandua.webp',
-      '/assets/img/torredevigia/torredevigia.webp',
-      '/assets/img/universidade/universidade.webp',
-    ];
-    
-    const imagens = [];
-    imagensParaPrecarregar.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-      imagens.push(img);
-    });
-    </script>
+  
 
 </body>
 </html>

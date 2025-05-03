@@ -908,9 +908,12 @@ function tocarSom(el){
 function comecarVez(){
   const textBox = document.createElement('div');
   const pai = document.querySelector('.tabuleiro');
-
   textBox.className = 'txtBox';
+  if(currentPlayer === 1){
   textBox.textContent = 'Sua Vez';
+  }else{
+    textBox.textContent = 'Vez do Bot';	
+  }
   pai.appendChild(textBox);
   desabilitarSelecao();
 
@@ -925,6 +928,18 @@ function comecarVez(){
       textBox.remove();
       habilitarSelecao();
     },1000);
+  }else{
+    {
+      document.getElementById('p2-tijolos').classList.add('brilho-animado');
+      document.getElementById('p2-armas').classList.add('brilho-animado');
+      document.getElementById('p2-cristais').classList.add('brilho-animado');
+      setTimeout(() =>{
+        document.getElementById('p2-tijolos').classList.remove('brilho-animado');
+        document.getElementById('p2-armas').classList.remove('brilho-animado');
+        document.getElementById('p2-cristais').classList.remove('brilho-animado');
+        textBox.remove();
+      },1000);
+    }
   }
 }
 
@@ -981,6 +996,7 @@ function proximaRodada(){
   }
 
   if(currentPlayer === 2){
+    comecarVez();
     botJoga();
   }
   attUI();
@@ -1021,9 +1037,14 @@ function botJoga() {
     setTimeout(() => {
       document.querySelector('.card-tabuleiro').classList.remove('animar-carta-jogada-primeira');
       proximaRodada();
+      comecarVez();
     }, 2000);
   } else {
     console.log("Bot não possui recursos suficientes para jogar nenhuma carta.");
+    setTimeout(() => {
+      proximaRodada();
+      comecarVez();
+    }, 1000);
   }
 }
 
