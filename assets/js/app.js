@@ -913,6 +913,7 @@ function comecarVez(){
   textBox.textContent = 'Sua Vez';
   }else{
     textBox.textContent = 'Vez do Bot';	
+    console.log('Vez do Bot');
   }
   pai.appendChild(textBox);
   desabilitarSelecao();
@@ -987,6 +988,9 @@ function verificarJogador(){
 //CHAMA PROXIMA RODADA
 function proximaRodada(){
 
+  if(checarCondicaoVitoria() == true){
+    return;
+  }
 
   verificarJogador();
   currentPlayer = currentPlayer === 1 ? 2 : 1;
@@ -997,7 +1001,9 @@ function proximaRodada(){
 
   if(currentPlayer === 2){
     comecarVez();
-    botJoga();
+    setTimeout(() => {
+      botJoga();
+    }, 1000);
   }
   attUI();
 }
@@ -1064,4 +1070,80 @@ function mostrarCartaBot(cartaBot){
       </div>
     </div>
   `;
+}
+
+
+
+//CONDICOES DE VITORIA E DERROTA
+
+function vencer(){
+  habilitarSelecao();
+  const tela = document.createElement('div');
+  const pai = document.querySelector('.main');
+  tela.className = ('txtBox');
+  tela.innerHTML = `Você venceu! Clique no botão para jogar novamente.
+    <button class="button" onclick="reiniciarJogo()">Recomeçar</button> `;
+  pai.appendChild(tela);
+  document.querySelector('.hand').classList.add('naoclicavel');
+}
+
+
+function perder(){
+  habilitarSelecao();
+  const tela = document.createElement('div');
+  const pai = document.querySelector('.main');
+  tela.className = ('txtBox');
+  tela.innerHTML = `Você perdeu! Clique no botão para jogar novamente.
+    <button class="button" onclick="reiniciarJogo()">Recomeçar</button> `;
+  pai.appendChild(tela);
+  document.querySelector('.hand').classList.add('naoclicavel');
+}
+
+
+function checarCondicaoVitoria(){
+  if(players[1].castelo <= 0 || players[2].castelo >= 100){
+    perder();
+    return true;
+  }
+
+  if(players[2].castelo <= 0 || players[1].castelo >= 100){
+    vencer();
+    return true;
+  }
+}
+
+
+
+//REINICIAR
+function reiniciarJogo() {
+  document.querySelector('.hand').classList.remove('naoclicavel');
+  document.querySelector('.txtBox').remove();
+
+  players[1] = {
+    castelo: 30,
+    muro: 10,
+    tijolos: 5,
+    armas: 5,
+    cristais: 5,
+    construtores: 2,
+    soldados: 2,
+    magos: 2
+  };
+  players[2] = {
+    castelo: 30,
+    muro: 10,
+    tijolos: 5,
+    armas: 5,
+    cristais: 5,
+    construtores: 2,
+    soldados: 2,
+    magos: 2
+  };
+
+  currentPlayer = 1;
+  gerarCartas();
+  centralizarTabuleiro();
+  attUI();
+  habilitarSelecao();
+  comecarVez();
 }
