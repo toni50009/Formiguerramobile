@@ -1,0 +1,32 @@
+body {
+    background-color: #1c1c1c;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .titulo {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  /* Botão Marrom Claro */
+  .btn-marrom {
+    background-color: #6f4e37;
+    color: white;
+    border: none;
+  }
+  
+  .btn-marrom:hover {
+    background-color: #8b5c3e;
+  }
+  
+  /* Botão Marrom Escuro (menor) */
+  .btn-marrom-escuro {
+    background-color: #3e2723;
+    color: white;
+    border: none;
+  }
+  
+  .btn-marrom-escuro:hover {
+    background-color: #5d4037;
+  }
