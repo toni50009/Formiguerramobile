@@ -1,7 +1,7 @@
-function mostrarTutorialInicio(){
+function mostrarInfoJogador(){
+    const layoutJogador = document.getElementById("layout-jogador");
+    layoutJogador.classList.remove("invisivel");
 
-}
-
-function proximaParte1(){
-    
+    const campoCartas = document.getElementById("campo-cartas");
+    campoCartas.classList.add("invisivel");
 }

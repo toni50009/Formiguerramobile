@@ -49,7 +49,7 @@
             <p class="text-tutorial"><strong>Formiguerra Mobile</strong> é um jogo de cartas onde você pode ganhar de duas formas:</p>
             <p class="text-tutorial">1. Destruir o castelo inimigo</p>
             <p class="text-tutorial">2. Fazer seu castelo chegar a 100</p>
-            <button class="btn btn-marrom" onclick="proximaParte1()">Próximo</button>
+            <button class="btn btn-marrom" onclick="mostrarInfoJogador()">Próximo</button>
           </div>
         </div>
       </div>
@@ -57,40 +57,42 @@
 
 
     <section id="layout-jogador" class="invisivel">
+
+      <div class="player-info-tutorial d-flex flex-column justify-content-center align-items-center text-center p-2">
         <div class="player-zone d-flex flex-column justify-content-end align-items-center pb-1">
 
-        <div class="hand d-flex justify-content-center gap-1 mb-1">
-        
-            <link rel="preload" as="image" href="/assets/img/alistamento/alistamento.webp">
-            <link rel="preload" as="image" href="/assets/img/arqueiro/arqueiro.webp">
-            <link rel="preload" as="image" href="/assets/img/tamandua/tamandua.webp">
-            <link rel="preload" as="image" href="/assets/img/torredevigia/torredevigia.webp">
-            <link rel="preload" as="image" href="/assets/img/universidade/universidade.webp">
+          <section id="campo-cartas">
+            <div class="hand d-flex justify-content-center gap-1 mb-1">
+            
+                <link rel="preload" as="image" href="/assets/img/alistamento/alistamento.webp">
+                <link rel="preload" as="image" href="/assets/img/arqueiro/arqueiro.webp">
+                <link rel="preload" as="image" href="/assets/img/tamandua/tamandua.webp">
+                <link rel="preload" as="image" href="/assets/img/torredevigia/torredevigia.webp">
+                <link rel="preload" as="image" href="/assets/img/universidade/universidade.webp">
 
-            <div class="card-player card">
-                <img src="/assets/img/alistamento/alistamento.webp" class="card-img-top" alt="Alistamento">
+                <div class="card-player card">
+                    <img src="/assets/img/alistamento/alistamento.webp" class="card-img-top" alt="Alistamento">
+                </div>
+
+                <div class="card-player card">
+                    <img src="/assets/img/arqueiro/arqueiro.webp" class="card-img-top" alt="Arqueiro">
+                </div>
+
+                <div class="card-player card">
+                    <img src="/assets/img/tamandua/tamandua.webp" class="card-img-top" alt="Tamandua">
+                </div>
+
+                <div class="card-player card">
+                    <img src="/assets/img/torredevigia/torredevigia.webp" class="card-img-top" alt="Torre de Vigia">
+                </div>
+
+                <div class="card-player card">
+                    <img src="/assets/img/universidade/universidade.webp" class="card-img-top" alt="Universidade">
+                </div>
             </div>
-
-            <div class="card-player card">
-                <img src="/assets/img/arqueiro/arqueiro.webp" class="card-img-top" alt="Arqueiro">
-            </div>
-
-            <div class="card-player card">
-                <img src="/assets/img/tamandua/tamandua.webp" class="card-img-top" alt="Tamandua">
-            </div>
-
-            <div class="card-player card">
-                <img src="/assets/img/torredevigia/torredevigia.webp" class="card-img-top" alt="Torre de Vigia">
-            </div>
-
-            <div class="card-player card">
-                <img src="/assets/img/universidade/universidade.webp" class="card-img-top" alt="Universidade">
-            </div>
-
-        
+          </section>
         </div>
 
-        </div>
       <div class="player-info container bg-black border border-danger d-flex justify-content-center align-items-center text-center p-2">
         <div class="player-info-tables d-flex flex-row gap-2">
           <div class="recursos-player border border-warning p-2"  style="background-color: #d6c68f;">
