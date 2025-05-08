@@ -650,8 +650,19 @@ function attUI(){
     document.getElementById(`p${i}-armas`).innerHTML = `⚔️Armas: <strong>${players[i].armas}</strong>`;
     document.getElementById(`p${i}-cristais`).innerHTML = `💎Cristais: <strong>${players[i].cristais}</strong>`;
     document.getElementById(`p${i}-magos`).innerHTML = `🧙Magos: <strong>${players[i].magos}</strong>`;
+    atualizarBarras(players[i].castelo, players[i].muro, `barra-p${i}-castelo`, `barra-p${i}-muro`);
   }
 }
+
+
+function atualizarBarras(castelo, muro, idCastelo, idMuro) {
+  const casteloPorcentagem = Math.min(Math.max((castelo / 100) * 100, 0), 100);
+  const muroPorcentagem = Math.min(Math.max((muro / 100) * 100, 0), 100);
+
+  document.getElementById(idCastelo).style.width = `${casteloPorcentagem}%`;
+  document.getElementById(idMuro).style.width = `${muroPorcentagem}%`;
+}
+
 
 
 function centralizarTabuleiro(){
@@ -1203,4 +1214,17 @@ function reiniciarJogo() {
   attUI();
   habilitarSelecao();
   comecarVez();
+}
+
+
+
+function mensagemVoltarInicio(){
+  const textBox = document.createElement('div');
+  const pai = document.querySelector('.tabuleiro');
+  textBox.className = 'txtBox';
+  textBox.innerHTML = `
+  <p class="card-text-tabuleiro"><strong>Voltar ao Início?</strong></p>
+  <a href="index.html"><button class="btn btn-card text-white bg-success">Sim</button></a>
+  <button class="btn btn-card text-white bg-danger" onclick="cancelarTroca()">Não</button>`;
+  pai.appendChild(textBox);
 }
