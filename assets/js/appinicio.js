@@ -103,6 +103,8 @@ function mostrarInfoCarta(){
           <p class="card-text-tabuleiro"><strong>Custa 21 de 💎</strong></p>
           <button class="btn btn-card text-white bg-success" id="btn-jogar">Jogar</button>
           <button class="btn btn-card text-white bg-danger" id="btn-trocar">Trocar</button>
+          <br>
+          <br>
           <p class="card-text-tabuleiro">A carta aparecerá com o <strong>Nome</strong>, <strong>Efeito</strong> e <strong>Custo</strong>.</p>
           <p class="card-text-tabuleiro">Você pode clicar em Jogar se tiver o recurso suficiente, ou clicar em <strong>Trocar</strong>.</p>
           <p class="card-text-tabuleiro">Ao Trocar, você recebe +1 de <strong>TODOS</strong> os recursos, troca a carta por outra e passa a vez.</p>
