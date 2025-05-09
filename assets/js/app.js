@@ -216,7 +216,7 @@ const cartas = [
     nome: 'incendiar',
     nomecompleto: 'Incendiar',
     efeito:{
-      tipo: 'remover',
+      tipo: 'removertudo',
       alvo: ['tijolos',
         'armas',
         'cristais'
@@ -478,7 +478,7 @@ function gerarCartas(){
     el.dataset.cartaId = indiceCarta;
 
     el.innerHTML = `
-          <img src="${cartaAleatoria.imagem}" class="card-img-top" alt="${cartaAleatoria.nome}">
+          <img src="${cartaAleatoria.imagem}" class="card-img-top mao" alt="${cartaAleatoria.nome}">
     `;
 
   });
@@ -516,7 +516,7 @@ function gerarDescricao(carta){
 
 
       case 'gangorratudo':
-        return `Rouba 1 de todos os recursos e fornecedores do inimigo`;
+        return `Rouba 1 de tudo do inimigo`;
 
         default:
   return "Tipo de efeito desconhecido";
@@ -712,6 +712,10 @@ function checarDados(jogador,efeito,jogadorAlvo){
       remover(jogadorAlvo,efeito);
       break;
 
+    case 'removertudo':
+      remover(jogadorAlvo,efeito);
+      break;
+
     case 'gangorra':
       gangorra(jogador,jogadorAlvo,efeito);
       break;
@@ -871,7 +875,13 @@ function jogarCarta(el){
 
   },2000);  
   } else {
-    alert('Você não tem recursos suficientes!');
+  const textBox = document.createElement('div');
+  const pai = document.querySelector('.tabuleiro');
+  textBox.className = 'txtBox';
+  textBox.innerHTML = `
+  <p class="card-text-tabuleiro">Sem recurso suficiente!</p>
+  <button class="btn btn-card text-white bg-success" onclick="cancelarTroca()">Ok</button>`;
+  pai.appendChild(textBox);
   }
 }
 
