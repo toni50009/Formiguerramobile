@@ -28,8 +28,8 @@ function mostrarInfoJogador(){
     layoutJogador.classList.remove("invisivel");
     campoCartas.classList.add("invisivel");
     textoCard.innerHTML = `
-            <h3><strong>Seu Status</strong></h3>
-            <p class="text-tutorial">Este é o seu <strong>Castelo</strong> , que é protegido pelo <strong>Muro</strong>.</p>
+            <h3>Seu Status</h3>
+            <p class="text-tutorial">Este é o seu Castelo , que é protegido pelo Muro.</p>
             <p class="text-tutorial">Se o seu castelo chegar em 100, você ganha</p>
             <p class="text-tutorial">Se o inimigo fizer ele chegar a 0 , você perde</p>
             <button class="btn btn-marrom" onclick="mostrarInfoRecursos()">Próximo</button>
@@ -42,8 +42,8 @@ function mostrarInfoRecursos(){
     adicionarDestaque(campoRecursos, 'borda-destaque');
     retirarDestaque(campoCastelo, 'borda-destaque');
     textoCard.innerHTML = `
-            <h3><strong>Seu Status</strong></h3>
-            <p class="text-tutorial">Estes são os seus <strong>Recursos</strong> , que são usados para jogar cartas.</p>
+            <h3>Seu Status</h3>
+            <p class="text-tutorial">Estes são os seus Recursos , que são usados para jogar cartas.</p>
             <p class="text-tutorial">Ter recursos é importante para manter seu castelo de pé, ou para fins destrutivos.</p>
             <button class="btn btn-marrom" onclick="mostrarInfoFornecedores()">Próximo</button>
     `;
@@ -54,9 +54,9 @@ function mostrarInfoFornecedores(){
     adicionarDestaque(campoFornecedores, 'borda-destaque');
     retirarDestaque(campoRecursos, 'borda-destaque');
     textoCard.innerHTML = `
-            <h3><strong>Seu Status</strong></h3>
-            <p class="text-tutorial">Estes são os seus <strong>Fornecedores</strong> , que são usados para gerar <strong>recursos</strong>.</p>
-            <p class="text-tutorial">Sempre que seu turno começar, você recebe os recursos dos respectivos <strong>fornecedores</strong>.</p>
+            <h3>Seu Status</h3>
+            <p class="text-tutorial">Estes são os seus Fornecedores , que são usados para gerar recursos.</p>
+            <p class="text-tutorial">Sempre que seu turno começar, você recebe os recursos dos respectivos fornecedores.</p>
             <button class="btn btn-marrom" onclick="mostrarTextoExtraFornecedores()">Próximo</button>
     `;
 }
@@ -64,7 +64,7 @@ function mostrarInfoFornecedores(){
 
 function mostrarTextoExtraFornecedores(){
     textoCard.innerHTML = `
-            <h3><strong>Seu Status</strong></h3>
+            <h3>Seu Status</h3>
             <p class="text-tutorial">🧱Tijolos são aumentados por 🔨Construtores</p>
             <p class="text-tutorial">⚔️Armas são aumentadas por 🛡️Soldados</p>
             <p class="text-tutorial">💎Cristais são aumentados por 🧙Magos</p>
@@ -84,9 +84,9 @@ function mostrarInfoCampoCartas(){
 
     retirarDestaque(campoFornecedores, 'borda-destaque');
     textoCard.innerHTML = `
-            <h3><strong>Seu Status</strong></h3>
-            <p class="text-tutorial">Este é o seu <strong>Campo de Cartas</strong> , onde você pode selecionar qual carta quer ver mais detalhes.</p>
-            <p class="text-tutorial">Ao clicar na imagem da carta, ele aparecerá aqui neste campo, o <strong>tabuleiro</strong>, e você poderá analisá-la.</p>
+            <h3>Suas Cartas</h3>
+            <p class="text-tutorial">Este é o seu Campo de Cartas , onde você pode selecionar qual carta quer ver mais detalhes.</p>
+            <p class="text-tutorial">Ao clicar na imagem da carta, ele aparecerá aqui neste campo, o tabuleiro, e você poderá analisá-la.</p>
             <button class="btn btn-marrom" onclick="mostrarInfoCarta()">Próximo</button>
     `;
 }
@@ -98,16 +98,16 @@ function mostrarInfoCarta(){
     <div class="card-tabuleiro card"">
       <img src="/assets/img/tamandua/tamandua.webp" class="card-img-top" alt="tamandua">
       <div class="card-body">
-          <h5 class="card-title"><strong>Tamanduá</strong></h5>
-          <p class="card-text-tabuleiro"><strong>Causa 25 de dano</strong></p>
-          <p class="card-text-tabuleiro"><strong>Custa 21 de 💎</strong></p>
+          <h5 class="card-title">Tamanduá</h5>
+          <p class="card-text-tabuleiro">Causa 25 de dano</p>
+          <p class="card-text-tabuleiro">Custa 21 de 💎</p>
           <button class="btn btn-card text-white bg-success" id="btn-jogar">Jogar</button>
           <button class="btn btn-card text-white bg-danger" id="btn-trocar">Trocar</button>
           <br>
           <br>
-          <p class="card-text-tabuleiro">A carta aparecerá com o <strong>Nome</strong>, <strong>Efeito</strong> e <strong>Custo</strong>.</p>
-          <p class="card-text-tabuleiro">Você pode clicar em Jogar se tiver o recurso suficiente, ou clicar em <strong>Trocar</strong>.</p>
-          <p class="card-text-tabuleiro">Ao Trocar, você recebe +1 de <strong>TODOS</strong> os recursos, troca a carta por outra e passa a vez.</p>
+          <p class="card-text-tabuleiro">A carta aparecerá com o Nome, Efeito e Custo.</p>
+          <p class="card-text-tabuleiro">Você pode clicar em Jogar se tiver o recurso suficiente, ou clicar em Trocar.</p>
+          <p class="card-text-tabuleiro">Ao Trocar, você recebe +1 de TODOS os recursos, troca a carta por outra e passa a vez.</p>
           <button class="btn btn-marrom" onclick="mostrarInfoFinal()">Próximo</button>
       </div>
     
@@ -121,7 +121,9 @@ function mostrarInfoCarta(){
 function mostrarInfoFinal(){
     textoCard.innerHTML = `
             <p class="text-tutorial">Parabéns! Você agora sabe como jogar!</p>
+            <br>
             <p class="text-tutorial">Lembre-se: Você enfrentará um Bot , e ele pode ganhar pelas mesmas condições que você.</p>
+            <br>
             <p class="text-tutorial">Volte ao Início e clique em "Jogar"!</p>
             <a href="index.html"<button class="btn btn-marrom">Voltar</button>
     `;

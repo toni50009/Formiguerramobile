@@ -50,106 +50,106 @@
 <body class="bg-dark text-white">
 
   <div class="main container-fluid d-flex flex-column justify-content-between vh-100 vw-100">
+    <div class="container-campo-jogo container-sm d-flex flex-column justify-content-between vh-100">
 
-    <div class="enemy-info container bg-black border border-danger d-flex justify-content-center align-items-center text-center p-2">
-      <div class="enemy-info-tables d-flex flex-row gap-2">
-        <div class="recursos-inimigo border border-warning p-2" style="background-color: #d6c68f;   min-width: 100px;">
-          <strong class="title">Recursos Inimigos</strong>
-          <p class="table-item" id="p2-tijolos">🧱Tijolos: <strong>5</strong></p>
-          <p class="table-item"id="p2-armas">⚔️Armas: <strong>5</strong></p>
-          <p class="table-item" id="p2-cristais">💎Cristais: <strong>5</strong></p>
-        </div>
-        <div class="status-inimigo border border-warning p-2" style="background-color: #d6c68f;   min-width: 100px;">
-          <strong class="title">Inimigo</strong>
-          <p class="lh-1 table-item barra" id="p2-castelo">Castelo: <strong>30</strong></p>
-          <div class="progress" style="height: 0.8rem;">
-            <div id="barra-p2-castelo" class="progress-bar bg-success" style="width: 30%; transition: width 0.5s;"></div>
+      <div class="enemy-info container bg-black border border-danger d-flex justify-content-center align-items-center text-center p-2" style="border: 3px solid red !important;">
+        <div class="enemy-info-tables d-flex flex-row gap-1">
+          <div class="recursos-inimigo border border-warning p-2" style="background-color: #d6bd8f;   min-width: 100px;">
+            <p class="table-item">Recursos</p>
+            <p class="table-item" id="p2-tijolos">🧱Tijolos: 5</p>
+            <p class="table-item"id="p2-armas">⚔️Armas: 5</p>
+            <p class="table-item" id="p2-cristais">💎Cristais: 5</p>
           </div>
-          <p class="lh-1 table-item barra" id="p2-muro">Muro: <strong>10</strong></p>
-          <div class="progress" style="height: 0.8rem;">
-            <div id="barra-p2-muro" class="progress-bar bg-warning" style="width: 10%; transition: width 0.5s;"></div>
-          </div>
-        </div>
-        <div class="fornecedores-inimigo border border-warning p-2" style="background-color: #d6c68f;   min-width: 100px;">
-          <strong class="title">Fornecedores Inimigos</strong>
-          <p class="table-item" id="p2-construtores">🔨Construtores: <strong>2</strong></p>
-          <p class="table-item" id="p2-soldados">🛡️Soldados: <strong>2</strong></p>
-          <p class="table-item" id="p2-magos">🧙Magos: <strong>2</strong></p>
-        </div> 
-      </div>
-    </div>
-
-    <div class="tabuleiro-wrapper container position-relative d-flex justify-content-center align-items-center flex-grow-1">
-      <div class="icone-seta-container">
-        <button class="btn-icone" onclick="mensagemVoltarInicio()"><i class="bi bi-arrow-left-circle-fill" style="font-size: 2rem;"></i></button>
-      </div>
-      <div class="tabuleiro container d-flex align-items-center justify-content-center" id="tabuleiro">
-        <div class="card-tabuleiro card">
-          <img src="/assets/img/icone.webp" class="card-img-top" alt="Imagem do Tabuleiro" style="opacity: 0.5;">
-          <div class="card-body">
-            <p class="card-text"><strong>Tabuleiro</strong></p>
-            <p class="card-text"><strong>Clique na carta de sua mão, que ela aparecerá aqui com detalhes</strong></p>
-          </div>
-        </div>
-      </div>
-    </div>  
-
-
-    <div class="player-zone d-flex flex-column justify-content-end align-items-center pb-1">
-
-      <div class="hand d-flex justify-content-center gap-1 mb-1">
-       
-
-        <div class="card-player card" onclick="mostrarCarta(this)">
-        </div>
-
-        <div class="card-player card" onclick="mostrarCarta(this)">
-        </div>
-
-        <div class="card-player card" onclick="mostrarCarta(this)">
-        </div>
-
-        <div class="card-player card" onclick="mostrarCarta(this)">
-        </div>
-
-        <div class="card-player card" onclick="mostrarCarta(this)">
-        </div>
-
-        
-
-      </div>
-
-    </div>
-      <div class="player-info container bg-black border border-danger d-flex justify-content-center align-items-center text-center p-2">
-        <div class="player-info-tables d-flex flex-row gap-2">
-          <div class="recursos-player border border-warning p-2"  style="background-color: #d6c68f;   min-width: 100px;">
-            <strong class="title">Recursos</strong>
-            <p class="table-item" id="p1-tijolos">🧱Tijolos: <strong>5</strong></p>
-            <p class="table-item" id="p1-armas">⚔️Armas: <strong>5</strong></p>
-            <p class="table-item" id="p1-cristais">💎Cristais: <strong>5</strong></p>
-          </div>
-          <div class="status-player border border-warning p-2" style="background-color: #d6c68f;   min-width: 100px;">
-            <strong class="title">Você</strong>
-            <p class="table-item barra" id="p1-castelo">Castelo: <strong>30</strong></p>
+          <div class="status-inimigo border border-warning p-2" style="background-color: #d6bd8f;   min-width: 100px;">
+            <p class="table-item">Inimigo</p>
+            <p class="lh-1 table-item barra" id="p2-castelo">Castelo: 30</p>
             <div class="progress" style="height: 0.8rem;">
-              <div id="barra-p1-castelo" class="progress-bar bg-success" role="progressbar" 
-                   style="width: 30%; transition: width 0.5s;"></div>
+              <div id="barra-p2-castelo" class="progress-bar bg-success" style="width: 30%; transition: width 0.5s;"></div>
             </div>
-            <p class="table-item barra" id="p1-muro">Muro: <strong>10</strong></p>
+            <p class="lh-1 table-item barra" id="p2-muro">Muro: 10</p>
             <div class="progress" style="height: 0.8rem;">
-              <div id="barra-p1-muro" class="progress-bar bg-warning" role="progressbar" style="width: 10%; transition: width 0.5s;"></div>
+              <div id="barra-p2-muro" class="progress-bar" style="width: 10%; transition: width 0.5s; background-color: brown;"></div>
             </div>
           </div>
-          <div class="fornecedores-player border border-warning p-2" style="background-color: #d6c68f;   min-width: 100px;">
-            <strong class="title">Fornecedores</strong>
-            <p class="table-item" id="p1-construtores">🔨Construtores: <strong>2</strong></p>
-            <p class="table-item" id="p1-soldados">🛡️Soldados: <strong>2</strong></p>
-            <p class="table-item" id="p1-magos">🧙Magos: <strong>2</strong></p>
+          <div class="fornecedores-inimigo border border-warning p-2" style="background-color: #d6bd8f;   min-width: 100px;">
+            <p class="table-item">Fornecedores</p>
+            <p class="table-item" id="p2-construtores">🔨Construtores: 2</p>
+            <p class="table-item" id="p2-soldados">🛡️Soldados: 2</p>
+            <p class="table-item" id="p2-magos">🧙Magos: 2</p>
           </div> 
         </div>
       </div>
 
+      <div class="tabuleiro-wrapper container position-relative d-flex justify-content-center align-items-center flex-grow-1">
+        <div class="icone-seta-container">
+          <button class="btn-icone" onclick="mensagemVoltarInicio()"><i class="bi bi-arrow-left-circle-fill" style="font-size: 2rem;"></i></button>
+        </div>
+        <div class="tabuleiro container d-flex align-items-center justify-content-center" id="tabuleiro">
+          <div class="card-tabuleiro card">
+            <img src="/assets/img/icone.webp" class="card-img-top" alt="Imagem do Tabuleiro" style="opacity: 0.5;">
+            <div class="card-body">
+              <p class="card-text">Tabuleiro</p>
+              <p class="card-text">Clique na carta de sua mão, que ela aparecerá aqui com detalhes</p>
+            </div>
+          </div>
+        </div>
+      </div>  
 
+
+      <div class="player-zone d-flex flex-column justify-content-end align-items-center pb-1">
+
+        <div class="hand d-flex justify-content-center gap-1 mb-1">
+        
+
+          <div class="card-player card" onclick="mostrarCarta(this)">
+          </div>
+
+          <div class="card-player card" onclick="mostrarCarta(this)">
+          </div>
+
+          <div class="card-player card" onclick="mostrarCarta(this)">
+          </div>
+
+          <div class="card-player card" onclick="mostrarCarta(this)">
+          </div>
+
+          <div class="card-player card" onclick="mostrarCarta(this)">
+          </div>
+
+          
+
+        </div>
+
+      </div>
+        <div class="player-info container bg-black border border-success d-flex justify-content-center align-items-center text-center p-1" style="border: 3px solid green !important;">
+          <div class="player-info-tables d-flex flex-row gap-1">
+            <div class="recursos-player border border-warning p-2"  style="background-color: #d6c68f;   min-width: 100px;">
+              <p class="table-item">Recursos</p>
+              <p class="table-item" id="p1-tijolos">🧱Tijolos: 5</p>
+              <p class="table-item" id="p1-armas">⚔️Armas: 5</p>
+              <p class="table-item" id="p1-cristais">💎Cristais: 5</p>
+            </div>
+            <div class="status-player border border-warning p-2" style="background-color: #d6c68f;   min-width: 100px;">
+              <p class="table-item">Você</p>
+              <p class="table-item barra" id="p1-castelo">Castelo: 30</p>
+              <div class="progress" style="height: 0.8rem;">
+                <div id="barra-p1-castelo" class="progress-bar bg-success" role="progressbar" 
+                    style="width: 30%; transition: width 0.5s;"></div>
+              </div>
+              <p class="table-item barra" id="p1-muro">Muro: 10</p>
+              <div class="progress" style="height: 0.8rem;">
+                <div id="barra-p1-muro" class="progress-bar" role="progressbar" style="width: 10%; transition: width 0.5s; background-color: brown;"></div>
+              </div>
+            </div>
+            <div class="fornecedores-player border border-warning p-2" style="background-color: #d6c68f;   min-width: 100px;">
+              <p class="table-item">Fornecedores</p>
+              <p class="table-item" id="p1-construtores">🔨Construtores: 2</p>
+              <p class="table-item" id="p1-soldados">🛡️Soldados: 2</p>
+              <p class="table-item" id="p1-magos">🧙Magos: 2</p>
+            </div> 
+          </div>
+        </div>
+    </div>
 
   </div> 
 

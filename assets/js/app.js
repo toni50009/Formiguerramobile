@@ -556,9 +556,9 @@ function mostrarCarta(el){
     <div class="card-tabuleiro card" data-carta-id="${cartaId}">
       <img src="${carta.imagem}" class="card-img-top" alt="${carta.nome}">
       <div class="card-body">
-          <h5 class="card-title"><strong>${carta.nomecompleto}</strong></h5>
-          <p class="card-text-tabuleiro"><strong>${gerarDescricao(carta)}</strong></p>
-          <p class="card-text-tabuleiro"><strong>${gerarTextoCusto(carta)}</strong></p>
+          <h5 class="card-title">${carta.nomecompleto}</h5>
+          <p class="card-text-tabuleiro">${gerarDescricao(carta)}</p>
+          <p class="card-text-tabuleiro">${gerarTextoCusto(carta)}</p>
           <button class="btn btn-card text-white bg-success" id="btn-jogar" onclick="jogarCarta(this)">Jogar</button>
            <button class="btn btn-card text-white bg-danger" id="btn-trocar" onclick="confirmarTroca(this)">Trocar</button>
       </div>
@@ -573,7 +573,7 @@ function confirmarTroca() {
   const pai = document.querySelector('.tabuleiro');
   textBox.className = 'txtBox';
   textBox.innerHTML = `
-  <p class="card-text-tabuleiro"><strong>Trocar e ganhar +1 de todos os recursos?</strong></p>
+  <p class="card-text-tabuleiro">Trocar e ganhar +1 de todos os recursos?</p>
   <button class="btn btn-card text-white bg-success" onclick="trocarCarta()">Sim</button>
   <button class="btn btn-card text-white bg-danger" onclick="cancelarTroca()">Não</button>`;
   pai.appendChild(textBox);
@@ -642,14 +642,14 @@ function novaCarta(el) {
 function attUI(){
 
   for(let i = 1; i <= 2; i++){
-    document.getElementById(`p${i}-castelo`).innerHTML = `Castelo: <strong>${players[i].castelo}</strong>`;
-    document.getElementById(`p${i}-muro`).innerHTML = `Muro: <strong>${players[i].muro}</strong>`;
-    document.getElementById(`p${i}-tijolos`).innerHTML = `🧱Tijlos: <strong>${players[i].tijolos}</strong>`;
-    document.getElementById(`p${i}-construtores`).innerHTML = `🔨Construtores: <strong>${players[i].construtores}</strong>`;
-    document.getElementById(`p${i}-soldados`).innerHTML = `🛡️Soldados: <strong>${players[i].soldados}</strong>`;
-    document.getElementById(`p${i}-armas`).innerHTML = `⚔️Armas: <strong>${players[i].armas}</strong>`;
-    document.getElementById(`p${i}-cristais`).innerHTML = `💎Cristais: <strong>${players[i].cristais}</strong>`;
-    document.getElementById(`p${i}-magos`).innerHTML = `🧙Magos: <strong>${players[i].magos}</strong>`;
+    document.getElementById(`p${i}-castelo`).innerHTML = `Castelo: ${players[i].castelo}`;
+    document.getElementById(`p${i}-muro`).innerHTML = `Muro: ${players[i].muro}`;
+    document.getElementById(`p${i}-tijolos`).innerHTML = `🧱Tijlos: ${players[i].tijolos}`;
+    document.getElementById(`p${i}-construtores`).innerHTML = `🔨Construtores: ${players[i].construtores}`;
+    document.getElementById(`p${i}-soldados`).innerHTML = `🛡️Soldados: ${players[i].soldados}`;
+    document.getElementById(`p${i}-armas`).innerHTML = `⚔️Armas: ${players[i].armas}`;
+    document.getElementById(`p${i}-cristais`).innerHTML = `💎Cristais: ${players[i].cristais}`;
+    document.getElementById(`p${i}-magos`).innerHTML = `🧙Magos: ${players[i].magos}`;
     atualizarBarras(players[i].castelo, players[i].muro, `barra-p${i}-castelo`, `barra-p${i}-muro`);
   }
 }
@@ -1132,9 +1132,9 @@ function mostrarCartaBot(cartaBot){
     <div class="card-tabuleiro card" data-carta-id="${cartaId}">
       <img src="${cartaBot.imagem}" class="card-img-top" alt="${cartaBot.nome}">
       <div class="card-body">
-          <h5 class="card-title"><strong>${cartaBot.nomecompleto}</strong></h5>
-          <p class="card-text-tabuleiro"><strong>${gerarDescricao(cartaBot)}</strong></p>
-          <p class="card-text-tabuleiro"><strong>${gerarTextoCusto(cartaBot)}</strong></p>
+          <h5 class="card-title">${cartaBot.nomecompleto}</h5>
+          <p class="card-text-tabuleiro">${gerarDescricao(cartaBot)}</p>
+          <p class="card-text-tabuleiro">${gerarTextoCusto(cartaBot)}</p>
       </div>
     </div>
   `;
@@ -1223,7 +1223,7 @@ function mensagemVoltarInicio(){
   const pai = document.querySelector('.tabuleiro');
   textBox.className = 'txtBox';
   textBox.innerHTML = `
-  <p class="card-text-tabuleiro"><strong>Voltar ao Início?</strong></p>
+  <p class="card-text-tabuleiro">Voltar ao Início?</p>
   <a href="index.html"><button class="btn btn-card text-white bg-success">Sim</button></a>
   <button class="btn btn-card text-white bg-danger" onclick="cancelarTroca()">Não</button>`;
   pai.appendChild(textBox);
